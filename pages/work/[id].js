@@ -55,7 +55,15 @@ export default function Project({ projectData }) {
 
 					<section className="project-photos">
 						{projectData.images.map((image, index) => (
-							<Image src="/img/img.svg" alt="" layout="responsive" width={954} height={592} className="project-photo"/>
+							<Image
+								src={`/${image}`}
+								alt=""
+								layout="responsive"
+								width={954}
+								height={592}
+                className="project-photo"
+                key={index}
+							/>
 						))}
 					</section>
 
