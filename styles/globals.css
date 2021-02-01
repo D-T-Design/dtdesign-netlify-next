@@ -89,7 +89,8 @@ body {
 	background-color: #747474;
 	color: white;
 	font-family: interstate, sans-serif;
-	padding: 1.5rem;
+  padding: 1.5rem;
+  background-image: url('../public/bg.jpg');
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
@@ -170,6 +171,7 @@ a:hover {
 	align-items: flex-start;
 	overflow: hidden;
 	background-repeat: no-repeat;
+  background-image: url('../public/bg-container.jpg');
 	background-position: center;
 	background-size: cover;
 	border: 1px solid #3c3c3c;

@@ -15,15 +15,15 @@ const socialLinks = [
 		title: "Stack Overflow - David Torres Design",
 	},
 ];
-function NavLinks() {
+export default function NavLinks() {
 	return (
 		<div className="links">
-			<button>
+			<button title="Download PDF Resume for David Torres">
 				Download Resume <img src="/img/pdf.svg" alt="Click Here to Download my Resume" />
 			</button>
 			<div className="social">
 				{socialLinks.map((social, index) => (
-					<a key={index} href={social.url} target="_blank" rel="noreferrer">
+					<a key={index} href={social.url} target="_blank" rel="noreferrer" title={social.title}>
 						<img src={social.img} alt={social.title} />
 					</a>
 				))}
@@ -31,5 +31,3 @@ function NavLinks() {
 		</div>
 	);
 }
-
-export default NavLinks;

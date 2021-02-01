@@ -12,7 +12,7 @@ export default function About() {
 					name="description"
 					content="Who am I? What have I done?  Why do I keep asking questions? All this and more..."
 				/>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/dtdesign-icon.jpg" />
 				<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
 			</Head>
 			<Navbar />

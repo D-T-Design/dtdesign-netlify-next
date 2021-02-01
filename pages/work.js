@@ -30,7 +30,7 @@ export default function Work() {
 					name="description"
 					content="Check out my work from happy clients and personal projects."
 				/>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/dtdesign-icon.jpg" />
 				<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
 			</Head>
 

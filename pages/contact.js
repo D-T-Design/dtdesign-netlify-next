@@ -30,7 +30,7 @@ export default function Contact() {
 					name="description"
 					content="Contact me for help building, maintaining, fixing, or updating your website."
 				/>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/dtdesign-icon.jpg" />
 				<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
 			</Head>
 

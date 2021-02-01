@@ -19,7 +19,7 @@ export default function Home() {
 		<div className="container">
 			<Head>
 				<title>David Torres - Web Designer and Developer</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/dtdesign-icon.jpg" />
 				<meta
 					name="description"
 					content="Web specialist with over 10 years of experience.  Use modern technology to achieve your web goals!"
@@ -51,7 +51,7 @@ export default function Home() {
 						<div className="skills">
 							{skills.map((skill, index) => (
 								<div className="skill-container" key={index}>
-									<img src={`/img/${skill.id}.svg`} alt={skill.title} title={skill.title}/>
+									<img src={`/img/${skill.id}.svg`} alt={skill.title} title={skill.title} />
 								</div>
 							))}
 						</div>
