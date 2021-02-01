@@ -336,14 +336,14 @@ a:hover {
 	position: relative;
 }
 a.cta {
-  background-color: #d94814;
-  border-bottom: 2px solid transparent;
-  transition: all 0.1s ease-in-out;
+	background-color: #d94814;
+	border-bottom: 2px solid transparent;
+	transition: all 0.1s ease-in-out;
 }
 a.cta:hover {
-  color: white;
-  border-color: white;
-  background-color: #bd3504;
+	color: white;
+	border-color: white;
+	background-color: #bd3504;
 }
 a.subtle {
 	font-family: interstate, Arial, Helvetica, sans-serif;
@@ -356,8 +356,8 @@ a.subtle {
 a.subtle svg {
 	margin-left: 1em;
 }
-.project-photos img {
-	margin-bottom: 1.5rem;
+.project-photos > div {
+	margin-bottom: 1.5rem !important;
 }
 .project-thumb {
 	padding-bottom: 1rem;
@@ -552,7 +552,7 @@ a.subtle svg {
 		height: 30px;
 		background-color: #7e7e7e;
 	}
-	.project-photos img {
+	.project-photo {
 		width: 95%;
 	}
 	.project-back {

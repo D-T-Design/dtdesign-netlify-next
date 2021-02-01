@@ -4,11 +4,11 @@
 		"data": {
 			"title": "S-R-T Services, Inc. Website",
 			"path": "srtservices",
-			"linkURL": "#",
-			"codeURL": "#",
-			"description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus vel sequi necessitatibus laborum, rerum error unde facilis possimus corrupti quo quam, omnis animi aliquid praesentium in pariatur eum voluptates ut.",
-			"tech": ["HTML", "CSS", "JS"],
-			"images": ["img.svg"]
+			"linkURL": "https://srtservices.vegas",
+			"codeURL": "",
+			"description": "S-R-T Services, Inc. is a local handyman and renovation service business in Las Vegas, NV.  The business needed an online presence so I created one that highlights Steve's projects and work quality.  It includes an image gallery, testimonial section, services section and much more.",
+			"tech": ["HTML", "CSS", "JS", "Webflow"],
+			"images": ["img.svg", "img.svg", "img.svg"]
 		}
 	},
 	{
@@ -20,7 +20,7 @@
 			"codeURL": "#",
 			"description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus vel sequi necessitatibus laborum, rerum error unde facilis possimus corrupti quo quam, omnis animi aliquid praesentium in pariatur eum voluptates ut.",
 			"tech": ["HTML", "CSS"],
-			"images": ["img.svg"]
+			"images": ["img.svg", "img.svg", "img.svg"]
 		}
 	},
 	{
@@ -32,7 +32,7 @@
 			"codeURL": "#",
 			"description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus vel sequi necessitatibus laborum, rerum error unde facilis possimus corrupti quo quam, omnis animi aliquid praesentium in pariatur eum voluptates ut.",
 			"tech": ["HTML", "CSS"],
-			"images": ["img.svg"]
+			"images": ["img.svg", "img.svg", "img.svg"]
 		}
 	}
 ]
