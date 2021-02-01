@@ -1,15 +1,21 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
 import data from "lib/projects.json";
 
-export default function Project() {
-	const router = useRouter();
-	const path = router.query;
-	const projectData = data.find((project) => project.data.path === path.id).data;
+export async function getStaticPaths() {
+	const paths = data.map((project) => `/work/${project.data.path}`);
+	return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+	const projectData = data.find((project) => project.data.path === params.id).data;
+	return { props: { projectData } };
+}
+
+export default function Project({projectData}) {
 	return (
 		<div className="container">
 			<Head>
@@ -23,7 +29,7 @@ export default function Project() {
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
-
+					{console.log(projectData)}
 					<section className="project-links">
 						<button>Link</button>
 						<button>Code</button>
