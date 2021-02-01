@@ -1,0 +1,38 @@
+[
+	{
+		"img": "/img/project-gif.svg",
+		"data": {
+			"title": "S-R-T Services, Inc. Website",
+			"path": "/work/srtservices",
+			"linkURL": "#",
+			"codeURL": "#",
+			"description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus vel sequi necessitatibus laborum, rerum error unde facilis possimus corrupti quo quam, omnis animi aliquid praesentium in pariatur eum voluptates ut.",
+			"tech": ["HTML", "CSS", "JS"],
+			"images": ["img.svg"]
+		}
+	},
+	{
+		"img": "/img/project-gif.svg",
+		"data": {
+			"title": "Project #2",
+			"path": "/work/project2",
+			"linkURL": "#",
+			"codeURL": "#",
+			"description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus vel sequi necessitatibus laborum, rerum error unde facilis possimus corrupti quo quam, omnis animi aliquid praesentium in pariatur eum voluptates ut.",
+			"tech": ["HTML", "CSS"],
+			"images": ["img.svg"]
+		}
+	},
+	{
+		"img": "/img/project-gif.svg",
+		"data": {
+			"title": "Project #3",
+			"path": "/work/project3",
+			"linkURL": "#",
+			"codeURL": "#",
+			"description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus vel sequi necessitatibus laborum, rerum error unde facilis possimus corrupti quo quam, omnis animi aliquid praesentium in pariatur eum voluptates ut.",
+			"tech": ["HTML", "CSS"],
+			"images": ["img.svg"]
+		}
+	}
+]
