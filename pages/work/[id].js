@@ -62,7 +62,6 @@ export default function Project({ projectData }) {
 								width={954}
                 height={592}
                 quality={100}
-                unoptimized
                 className="project-photo"
                 key={index}
 							/>
