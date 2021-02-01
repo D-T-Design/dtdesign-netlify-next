@@ -60,10 +60,10 @@ export default function Project({ projectData }) {
 								alt=""
 								layout="responsive"
 								width={954}
-                height={592}
-                quality={100}
-                className="project-photo"
-                key={index}
+								height={592}
+								quality={100}
+								className="project-photo"
+								key={index}
 							/>
 						))}
 					</section>
