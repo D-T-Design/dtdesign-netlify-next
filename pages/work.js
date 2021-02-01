@@ -11,12 +11,12 @@ const projects = data.map((project, i) => (
 		<h2>{project.data.title}</h2>
 		<img src={project.img} alt="" />
 		<div className="project-links">
-			<Link href={project.data.path}>
-				<button className="cta">View More</button>
+			<Link href={`/work/${project.data.path}`}>
+				<a className="cta">View More</a>
 			</Link>
-			<button className="subtle">
+			<a className="subtle">
 				Live Version <LinkIcon />
-			</button>
+			</a>
 		</div>
 	</div>
 ));

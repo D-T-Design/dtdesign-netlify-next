@@ -89,8 +89,8 @@ body {
 	background-color: #747474;
 	color: white;
 	font-family: interstate, sans-serif;
-  padding: 1.5rem;
-  background-image: url('../public/bg.jpg');
+	padding: 1.5rem;
+	background-image: url("../public/bg.jpg");
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
@@ -171,7 +171,7 @@ a:hover {
 	align-items: flex-start;
 	overflow: hidden;
 	background-repeat: no-repeat;
-  background-image: url('../public/bg-container.jpg');
+	background-image: url("../public/bg-container.jpg");
 	background-position: center;
 	background-size: cover;
 	border: 1px solid #3c3c3c;
@@ -328,8 +328,6 @@ a:hover {
 }
 .project-links a {
 	text-decoration: none;
-}
-.project-links button {
 	background-color: transparent;
 	display: flex;
 	font-size: 1.25rem;
@@ -337,10 +335,17 @@ a:hover {
 	padding: 10px 20px;
 	position: relative;
 }
-button.cta {
-	background-color: #d94814;
+a.cta {
+  background-color: #d94814;
+  border-bottom: 2px solid transparent;
+  transition: all 0.1s ease-in-out;
 }
-button.subtle {
+a.cta:hover {
+  color: white;
+  border-color: white;
+  background-color: #bd3504;
+}
+a.subtle {
 	font-family: interstate, Arial, Helvetica, sans-serif;
 	font-style: italic;
 	color: #d5d5d5;
@@ -348,7 +353,7 @@ button.subtle {
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 }
-button.subtle svg {
+a.subtle svg {
 	margin-left: 1em;
 }
 .project-photos img {

@@ -1,4 +1,5 @@
-import Link from "@components/Link";
+import Link from "next/link";
+import { NavLink } from "@components/Link";
 import NavLinks from "@components/NavLinks";
 export default function NavMenu() {
 	const routes = [
@@ -23,21 +24,25 @@ export default function NavMenu() {
 		<section className="nav">
 			<div className="logo">
 				<Link href="/">
-					<img src="/img/logo.svg" alt="David Torres Design" />
+					<a>
+						<img src="/img/logo.svg" alt="David Torres Design" />
+					</a>
 				</Link>
 			</div>
 			<div className="menu-small">
 				<Link href="/menu">
-					<img src="/img/menu.svg" alt="Menu" />
+					<a>
+						<img src="/img/menu.svg" alt="Menu" />
+					</a>
 				</Link>
 			</div>
 			<div className="menu-large">
 				<ul className="nav-list">
 					{routes.map((route, i) => (
 						<li key={i}>
-							<Link href={route.path}>
+							<NavLink href={route.path}>
 								<a className="nav-link">{route.text}</a>
-							</Link>
+							</NavLink>
 						</li>
 					))}
 				</ul>
