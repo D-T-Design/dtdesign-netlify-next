@@ -29,7 +29,6 @@ export default function Project({projectData}) {
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
-					{console.log(projectData)}
 					<section className="project-links">
 						<button>Link</button>
 						<button>Code</button>
