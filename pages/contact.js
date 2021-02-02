@@ -1,43 +1,34 @@
-import Head from "next/head";
+import SiteWrapper from "@components/SiteWrapper";
 import Header from "@components/Header";
-import Footer from "@components/Footer";
-import Navbar from "@components/Navbar";
 import { Facebook, LinkedIn, Email, Phone } from "lib/icons";
 
-const contactInfo = {
-	heading: "Contact David Torres",
-	phone: "7024730606",
-	email: "info@davidtorres.design",
-	social: [
-		{
-			title: "Facebook - David Torres Design",
-			url: "http://www.facebook.com/davidtorresdesign",
-			component: Facebook,
-		},
-		{
-			title: "LinkedIn - David Torres Design",
-			url: "http://www.linkedin.com/in/davidtorresdesign",
-			component: LinkedIn,
-		},
-	],
-};
 export default function Contact() {
+	const headSettings = {
+		title: "Contact David Torres for Web Design and Development",
+		description: "Contact me for help building, maintaining, fixing, or updating your website.",
+	};
+	const contactInfo = {
+		heading: "Contact David Torres",
+		phone: "7024730606",
+		email: "info@davidtorres.design",
+		social: [
+			{
+				title: "Facebook - David Torres Design",
+				url: "http://www.facebook.com/davidtorresdesign",
+				component: Facebook,
+			},
+			{
+				title: "LinkedIn - David Torres Design",
+				url: "http://www.linkedin.com/in/davidtorresdesign",
+				component: LinkedIn,
+			},
+		],
+	};
 	return (
-		<div className="container">
-			<Head>
-				<title>Contact David Torres for Web Design and Development</title>
-				<meta
-					name="description"
-					content="Contact me for help building, maintaining, fixing, or updating your website."
-				/>
-				<link rel="icon" href="/dtdesign-icon.jpg" />
-				<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
-			</Head>
-
-			<Navbar />
-
+		<SiteWrapper head={headSettings}>
 			<main className="body" id="contact">
 				<Header rank={1} text={contactInfo.heading} type="headline" />
+
 				<div className="col">
 					<a
 						href={`tel:${contactInfo.phone}`}
@@ -49,6 +40,7 @@ export default function Contact() {
 						{contactInfo.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
 					</a>
 				</div>
+
 				<div className="col">
 					<a
 						href={`mailto:${contactInfo.email}`}
@@ -60,6 +52,7 @@ export default function Contact() {
 						{contactInfo.email}
 					</a>
 				</div>
+
 				<div className="col">
 					<p className="center">Message on Social</p>
 					<div className="social-links">
@@ -71,8 +64,6 @@ export default function Contact() {
 					</div>
 				</div>
 			</main>
-
-			<Footer />
-		</div>
+		</SiteWrapper>
 	);
 }

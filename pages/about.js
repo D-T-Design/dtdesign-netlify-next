@@ -1,22 +1,14 @@
-import Head from "next/head";
 import Header from "@components/Header";
-import Footer from "@components/Footer";
-import Navbar from "@components/Navbar";
+import SiteWrapper from "@components/SiteWrapper";
 
 export default function About() {
+	const headSettings = {
+		title: "About David Torres - The story so far...",
+		description:
+			"Who am I? What have I done?  Why do I keep asking questions? All this and more...",
+	};
 	return (
-		<div className="container">
-			<Head>
-				<title>About David Torres - The story so far...</title>
-				<meta
-					name="description"
-					content="Who am I? What have I done?  Why do I keep asking questions? All this and more..."
-				/>
-				<link rel="icon" href="/dtdesign-icon.jpg" />
-				<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
-			</Head>
-			<Navbar />
-
+		<SiteWrapper head={headSettings}>
 			<main className="body" id="about">
 				<div className="col">
 					<Header rank={1} text={"About David Torres"} type="headline" />
@@ -54,8 +46,6 @@ export default function About() {
 					<img src="/img/img.svg" alt="" />
 				</div>
 			</main>
-
-			<Footer />
-		</div>
+		</SiteWrapper>
 	);
 }

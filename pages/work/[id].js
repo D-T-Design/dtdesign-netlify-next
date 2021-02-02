@@ -1,43 +1,39 @@
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@components/Header";
-import Footer from "@components/Footer";
-import Navbar from "@components/Navbar";
-import data from "lib/projects.json";
+import projectLibrary from "lib/projects.json";
+import SiteWrapper from "@components/SiteWrapper";
 
 export async function getStaticPaths() {
-	const paths = data.map((project) => `/work/${project.data.path}`);
+	const paths = projectLibrary.map((project) => `/work/${project.data.path}`);
 	return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-	const projectData = data.find((project) => project.data.path === params.id).data;
+	const projectData = projectLibrary.find((project) => project.data.path === params.id).data;
 	return { props: { projectData } };
 }
 
 export default function Project({ projectData }) {
-	return (
-		<div className="container">
-			<Head>
-				<title>{projectData.title} - David Torres Web Project</title>
-				<meta name="description" content={projectData.description} />
-				<link rel="icon" href="/dtdesign-icon.jpg" />
-				<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
-			</Head>
-			<Navbar />
 
+	const headSettings = {
+		title: `${projectData.title} - David Torres Web Project`,
+		description: projectData.description,
+  };
+  
+	return (
+		<SiteWrapper head={headSettings}>
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
 					<section className="project-links">
 						{projectData.linkURL ? (
-							<a href={projectData.linkURL} className="btn">
+							<a href={projectData.linkURL} className="btn" target="_blank" rel="noopener">
 								Link
 							</a>
 						) : null}
 						{projectData.codeURL ? (
-							<a href={projectData.codeURL} className="btn">
+							<a href={projectData.codeURL} className="btn" target="_blank" rel="noopener">
 								Code
 							</a>
 						) : null}
@@ -80,8 +76,6 @@ export default function Project({ projectData }) {
 					</section>
 				</div>
 			</main>
-
-			<Footer />
-		</div>
+		</SiteWrapper>
 	);
 }
