@@ -6,12 +6,13 @@ import client from "../../client";
 import urlFor from "../../urlFor";
 
 export async function getStaticPaths() {
-	const paths = projectLibrary.map((project) => `/work/${project.data.path}`);
+	const res = await client.fetch(`*[_type == "project"]{slug}`);
+	const paths = res.map((project) => `/work/${project.slug.current}`);
 	return { paths, fallback: false };
 }
 
-export async function getStaticProps(context) {
-	const id = context.params.id;
+export async function getStaticProps({ params }) {
+	const id = params.id;
 	const res = await client.fetch(
 		`*[_type == "project" && slug.current == $id][0]{title,description,slug,tech,gallery, linkUrl}`,
 		{ id }
