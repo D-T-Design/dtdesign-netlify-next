@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Header from "@components/Header";
-import projectLibrary from "lib/projects.json";
 import SiteWrapper from "@components/SiteWrapper";
 import client from "../../client";
 import urlFor from "../../urlFor";
 
 export async function getStaticPaths() {
-	const res = await client.fetch(`*[_type == "project"]{slug}`);
+	const res = await client.fetch(/* groq */ `*[_type == "project"]{slug}`);
 	const paths = res.map((project) => `/work/${project.slug.current}`);
 	return { paths, fallback: false };
 }
@@ -14,7 +13,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	const id = params.id;
 	const res = await client.fetch(
-		`*[_type == "project" && slug.current == $id][0]{title,description,slug,tech,gallery, linkUrl}`,
+		/* groq */ `*[_type == "project" && slug.current == $id][0]{
+				title,
+				description,
+				slug,
+				tech,
+				gallery,
+				linkUrl
+		}`,
 		{ id }
 	);
 	return { props: { projectData: res } };
@@ -38,7 +44,6 @@ export default function Project({ projectData }) {
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
 					<section className="project-links">
-						{console.log(projectData)}
 						{projectData.linkUrl ? (
 							<a href={projectData.linkUrl} className="btn" target="_blank" rel="noopener">
 								Link
