@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Header from "@components/Header";
 import projectLibrary from "lib/projects.json";
 import SiteWrapper from "@components/SiteWrapper";
@@ -63,13 +62,10 @@ export default function Project({ projectData }) {
 
 					<section className="project-photos">
 						{galleryImages.map((imageUrl, index) => (
-							<Image
+							<img
 								src={imageUrl}
 								alt=""
 								layout="responsive"
-								width={954}
-								height={592}
-								quality={100}
 								className="project-photo"
 								key={index}
 							/>
