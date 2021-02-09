@@ -49,5 +49,20 @@ export default {
 				layout: "checkbox",
 			},
 		},
+		{
+			title: "Preview Image",
+			name: "previewimg",
+			type: "image",
+			fields: [
+				{
+					name: "caption",
+					type: "string",
+					title: "Caption",
+					options: {
+						isHighlighted: true,
+					},
+				},
+			],
+		},
 	],
 };
