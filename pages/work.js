@@ -9,7 +9,8 @@ export async function getStaticProps() {
 	const res = await client.fetch(/* groq */ `*[_type == "project"]{
 				title,
 				slug,
-				previewimg
+				previewimg,
+				linkUrl
 		}`);
 	return { props: { projects: res } };
 }
@@ -37,9 +38,11 @@ export default function Work(props) {
 						<a className="cta">View More</a>
 					</Link>
 
-					<a className="subtle">
-						Live Version <LinkIcon />
-					</a>
+					<Link href={project.linkUrl}>
+						<a className="subtle" target="_blank" rel="noopener">
+							Live Version <LinkIcon />
+						</a>
+					</Link>
 				</div>
 			</div>
 		);
