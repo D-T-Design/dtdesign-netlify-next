@@ -10,6 +10,9 @@ $back-arrow: #3f3f3f;
 $social-icons: #ffffff;
 
 $bg-color: #747474;
+$black-25: rgba(0, 0, 0, 0.25);
+$black-50: rgba(0, 0, 0, 0.5);
+$black-75: rgba(0, 0, 0, 0.75);
 $container-border: #3c3c3c;
 $border-color-subtle: #6d6d6d;
 $border-hover: #d5d5d5;
@@ -325,10 +328,19 @@ a {
 			display: flex;
 		}
 	}
-	&-small {
-		background-color: $bg-color;
+	&-small > a {
+		background-color: $black-50;
+		border-bottom: 1px solid transparent;
+		display: block;
 		height: 50px;
+		opacity: 0.5;
 		padding: 12px;
+		&:hover,
+		&:active {
+			background-color: $black-75;
+			border-color: $main-cta;
+			opacity: 1;
+		}
 	}
 }
 
@@ -360,8 +372,9 @@ a {
 		text-align: center;
 		text-decoration: none;
 		transition: all 0.1s ease-in-out;
-		&:hover {
-			border-bottom-color: $border-hover;
+		&:hover,
+		&:active {
+			border-bottom-color: $main-cta;
 			color: $border-hover;
 		}
 	}
@@ -440,7 +453,7 @@ a {
 	justify-content: center;
 	padding-top: 1rem;
 	a {
-		background-color: rgba(0, 0, 0, 0.25);
+		background-color: $black-25;
 		border-bottom: 1px solid transparent;
 		display: flex;
 		height: 54px;
@@ -449,7 +462,7 @@ a {
 		width: 54px;
 		transition: all 0.1s;
 		&:hover {
-			background-color: rgba(0, 0, 0, 0.5);
+			background-color: $black-50;
 			border-color: $main-cta;
 		}
 		img {
@@ -725,8 +738,8 @@ a {
 .bm {
 	&-burger {
 		&-button {
-      /* Position and sizing of burger button */
-      position: relative;
+			/* Position and sizing of burger button */
+			position: relative;
 			width: 36px;
 			height: 30px;
 		}
