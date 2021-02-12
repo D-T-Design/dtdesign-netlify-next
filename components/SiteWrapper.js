@@ -4,7 +4,7 @@ import Navbar from "@components/Navbar";
 
 export default function SiteWrapper(props) {
 	return (
-		<div className="container">
+		<div className="container" id="outer-container">
 			<Head
 				title={props.head.title}
 				description={props.head.description}

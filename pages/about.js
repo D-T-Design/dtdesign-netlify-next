@@ -9,7 +9,7 @@ export default function About() {
 	};
 	return (
 		<SiteWrapper head={headSettings}>
-			<main className="body" id="about">
+			<main className="body about" id="page-content">
 				<div className="col">
 					<Header rank={1} text={"About David Torres"} type="headline" />
 					<p>

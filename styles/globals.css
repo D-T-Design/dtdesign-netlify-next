@@ -1,3 +1,8 @@
+/* Global Color Variables */
+:root {
+	--main-cta: #d94814;
+}
+
 /* Reset */
 html,
 body,
@@ -143,7 +148,7 @@ a {
 	transition: all 0.05s;
 }
 a:hover {
-	color: #d94814;
+	color: var(--main-cta);
 }
 .body {
 	padding-top: 1.5rem;
@@ -192,12 +197,12 @@ a:hover {
 	font-style: normal;
 	border: 1px solid #6d6d6d;
 	border-bottom-width: 2px;
-	border-bottom-color: #d94814;
+	border-bottom-color: var(--main-cta);
 	transition: all 0.1s;
 }
 .contact-links:hover {
 	border-color: white;
-	border-bottom-color: #d94814;
+	border-bottom-color: var(--main-cta);
 	background-color: rgba(0, 0, 0, 0.5);
 }
 .contact-links img {
@@ -236,7 +241,7 @@ a:hover {
 	text-decoration: none;
 }
 .footer p a:hover {
-	color: #d94814;
+	color: var(--main-cta);
 }
 .footer p span {
 	display: block;
@@ -322,9 +327,6 @@ a:hover {
 .project-links {
 	display: flex;
 	justify-content: flex-start;
-	flex-direction: row-reverse;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
 }
 .project-links a {
 	text-decoration: none;
@@ -334,9 +336,10 @@ a:hover {
 	margin: 0;
 	padding: 10px 20px;
 	position: relative;
+	background-color: var(--main-cta)
 }
 a.cta {
-	background-color: #d94814;
+	background-color: var(--main-cta);
 	border-bottom: 2px solid transparent;
 	transition: all 0.1s ease-in-out;
 }
@@ -406,7 +409,7 @@ a.subtle svg {
 }
 .social a:hover {
 	background-color: rgba(0, 0, 0, 0.5);
-	border-color: #d94814;
+	border-color: var(--main-cta);
 }
 .social a img {
 	margin: auto;
@@ -424,7 +427,7 @@ a.subtle svg {
 	transition: fill 0.1s ease;
 }
 .social-links a:hover svg path {
-	fill: #d94814;
+	fill: var(--main-cta);
 }
 #header,
 #skills,
@@ -599,7 +602,7 @@ a.subtle svg {
 	}
 	.nav-link.active {
 		color: white;
-		border-color: #d94814;
+		border-color: var(--main-cta);
 	}
 	.nav-list {
 		flex-flow: row;
@@ -607,7 +610,7 @@ a.subtle svg {
 	}
 	.links button {
 		margin-right: 1rem;
-		background-color: #d94814;
+		background-color: var(--main-cta);
 		border-bottom: 2px solid transparent;
 		transition: all 0.1s;
 	}
