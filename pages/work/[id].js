@@ -37,7 +37,8 @@ export default function Project({ projectData }) {
 	const galleryImages = [];
 	projectData.gallery.forEach((image) => {
 		const imgUrl = urlFor(image).url();
-		galleryImages.push(imgUrl);
+		const imgCaption = image.caption;
+		galleryImages.push({ url: imgUrl, caption: imgCaption });
 	});
 
 	const serializers = {
@@ -82,10 +83,10 @@ export default function Project({ projectData }) {
 					</section>
 
 					<section className="project-photos">
-						{galleryImages.map((imageUrl, index) => (
+						{galleryImages.map((image, index) => (
 							<img
-								src={imageUrl}
-								alt=""
+								src={image.url}
+								alt={image.caption}
 								layout="responsive"
 								className="project-photo"
 								key={index}

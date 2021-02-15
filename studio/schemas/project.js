@@ -38,7 +38,21 @@ export default {
 			name: "gallery",
 			title: "Gallery",
 			type: "array",
-			of: [{ type: "image" }],
+			of: [
+				{
+					type: "image",
+					fields: [
+						{
+							name: "caption",
+							type: "string",
+							title: "Caption",
+							options: {
+								isHighlighted: true,
+							},
+						},
+					],
+				},
+			],
 		},
 		{
 			title: "Technology",
