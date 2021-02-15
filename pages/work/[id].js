@@ -40,11 +40,22 @@ export default function Project({ projectData }) {
 		galleryImages.push(imgUrl);
 	});
 
+	const serializers = {
+		marks: {
+			link: (props) => (
+				<a target="_blank" rel="noopener" href={props.mark.href}>
+					{props.children}
+				</a>
+			),
+		},
+	};
+
 	return (
 		<SiteWrapper head={headSettings}>
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
+
 					<section className="project-links">
 						{projectData.linkUrl ? (
 							<a href={projectData.linkUrl} className="btn" target="_blank" rel="noopener">
@@ -59,8 +70,10 @@ export default function Project({ projectData }) {
 					</section>
 
 					<section className="project-content">
-						<BlockContent blocks={projectData.description} />
+						<BlockContent blocks={projectData.description} serializers={serializers} />
+
 						<Header rank={2} text="Tech Used" type="headline" />
+
 						<ul>
 							{projectData.tech.map((text, index) => (
 								<li key={index}>{text}</li>
