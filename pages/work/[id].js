@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BlockContent from "@sanity/block-content-to-react";
 import Header from "@components/Header";
 import SiteWrapper from "@components/SiteWrapper";
 import client from "../../client";
@@ -16,6 +17,7 @@ export async function getStaticProps({ params }) {
 		/* groq */ `*[_type == "project" && slug.current == $id][0]{
 				title,
 				description,
+				seodescription,
 				slug,
 				tech,
 				gallery,
@@ -29,7 +31,7 @@ export async function getStaticProps({ params }) {
 export default function Project({ projectData }) {
 	const headSettings = {
 		title: `${projectData.title} - David Torres Web Project`,
-		description: projectData.description,
+		description: projectData.seodescription,
 	};
 
 	const galleryImages = [];
@@ -57,7 +59,7 @@ export default function Project({ projectData }) {
 					</section>
 
 					<section className="project-content">
-						{projectData.description ? <p>{projectData.description}</p> : null}
+						<BlockContent blocks={projectData.description} />
 						<Header rank={2} text="Tech Used" type="headline" />
 						<ul>
 							{projectData.tech.map((text, index) => (

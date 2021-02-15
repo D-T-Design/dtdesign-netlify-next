@@ -9,9 +9,15 @@ export default {
 			type: "string",
 		},
 		{
+			name: "seodescription",
+			title: "SEO Description",
+			type: "string",
+		},
+		{
 			name: "description",
 			title: "Description",
-			type: "text",
+			type: "array",
+			of: [{ type: "block" }],
 		},
 		{
 			name: "slug",
