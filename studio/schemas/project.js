@@ -61,9 +61,14 @@ export default {
 			of: [{ type: "string" }],
 			options: {
 				list: [
+					{ value: "Adobe Photoshop", title: "Photoshop" },
+					{ value: "Adobe Illustrator", title: "Illustrator" },
+					{ value: "Adobe XD", title: "XD" },
+					{ value: "Shopify", title: "Shopify" },
+					{ value: "React", title: "React" },
 					{ value: "HTML", title: "HTML" },
 					{ value: "CSS", title: "CSS" },
-					{ value: "JS", title: "JS" },
+					{ value: "Javascript", title: "JS" },
 					{ value: "Webflow", title: "Webflow" },
 				],
 				layout: "checkbox",
