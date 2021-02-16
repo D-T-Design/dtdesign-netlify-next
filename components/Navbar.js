@@ -2,7 +2,7 @@ import Link from "next/link";
 import { NavLink } from "@components/Link";
 import NavLinks from "@components/NavLinks";
 
-export default function NavMenu() {
+export default function NavMenu(props) {
 	const routes = [
 		{
 			path: "/",
@@ -48,7 +48,7 @@ export default function NavMenu() {
 					))}
 				</ul>
 			</div>
-			<NavLinks />
+			<NavLinks download={props.download} />
 		</section>
 	);
 }

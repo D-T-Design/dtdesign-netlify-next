@@ -6,13 +6,17 @@ import client from "../client";
 import urlFor from "../urlFor";
 
 export async function getStaticProps() {
-	const res = await client.fetch(/* groq */ `*[_type == "project"]{
+	const projects = await client.fetch(/* groq */ `*[_type == "project"]{
 				title,
 				slug,
 				previewimg,
 				linkUrl
 		}`);
-	return { props: { projects: res } };
+	const download = await client.fetch(/* groq */ `*[_type == "download"]{
+				description,
+				"downloadURL": download.asset->url
+		}`);
+	return { props: { projects, download } };
 }
 
 export default function Work(props) {
@@ -49,7 +53,7 @@ export default function Work(props) {
 	});
 
 	return (
-		<SiteWrapper head={headSettings}>
+		<SiteWrapper head={headSettings} download={props.download}>
 			<main className="body" id="work">
 				<div className="col">
 					<Header rank={1} text="My Design Work" type="headline" />

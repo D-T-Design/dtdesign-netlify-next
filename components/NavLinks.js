@@ -15,12 +15,12 @@ const socialLinks = [
 		title: "Stack Overflow - David Torres Design",
 	},
 ];
-export default function NavLinks() {
+export default function NavLinks(props) {
 	return (
 		<div className="links">
-			<button title="Download PDF Resume for David Torres">
+			<a href={props.download.downloadURL} title={props.download.description}>
 				Download Resume <img src="/img/pdf.svg" alt="Click Here to Download my Resume" />
-			</button>
+			</a>
 			<div className="social">
 				{socialLinks.map((social, index) => (
 					<a key={index} href={social.url} target="_blank" rel="noreferrer" title={social.title}>

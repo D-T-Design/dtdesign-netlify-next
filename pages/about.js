@@ -1,14 +1,23 @@
 import Header from "@components/Header";
 import SiteWrapper from "@components/SiteWrapper";
+import client from "../client";
 
-export default function About() {
+export async function getStaticProps() {
+	const res = await client.fetch(/* groq */ `*[_type == "download"][0]{
+				description,
+				"downloadURL": upload.asset->url
+		}`);
+	return { props: { download: res } };
+}
+
+export default function About(props) {
 	const headSettings = {
 		title: "About David Torres - The story so far...",
 		description:
 			"Who am I? What have I done?  Why do I keep asking questions? All this and more...",
 	};
 	return (
-		<SiteWrapper head={headSettings}>
+		<SiteWrapper head={headSettings} download={props.download}>
 			<main className="body about" id="page-content">
 				<div className="col">
 					<Header rank={1} text={"About David Torres"} type="headline" />

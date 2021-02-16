@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 	const id = params.id;
-	const res = await client.fetch(
+	const projectData = await client.fetch(
 		/* groq */ `*[_type == "project" && slug.current == $id][0]{
 				title,
 				description,
@@ -25,10 +25,14 @@ export async function getStaticProps({ params }) {
 		}`,
 		{ id }
 	);
-	return { props: { projectData: res } };
+	const download = await client.fetch(/* groq */ `*[_type == "download"]{
+				description,
+				"downloadURL": download.asset->url
+		}`);
+	return { props: { projectData, download } };
 }
 
-export default function Project({ projectData }) {
+export default function Project({ projectData, download }) {
 	const headSettings = {
 		title: `${projectData.title} - David Torres Web Project`,
 		description: projectData.seodescription,
@@ -45,7 +49,7 @@ export default function Project({ projectData }) {
 	};
 
 	return (
-		<SiteWrapper head={headSettings}>
+		<SiteWrapper head={headSettings} download={download}>
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />

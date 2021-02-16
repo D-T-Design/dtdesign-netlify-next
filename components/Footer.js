@@ -1,10 +1,10 @@
-export default function Footer() {
+export default function Footer(props) {
 	return (
 		<section className="footer">
 			<div className="links">
-				<button>
-					Download Resume <img src="/img/pdf.svg" alt="" />
-				</button>
+				<a href={props.download.downloadURL} title={props.download.description}>
+					Download Resume <img src="/img/pdf.svg" alt="Click Here to Download my Resume" />
+				</a>
 				<div className="social">
 					<a href="http://www.linkedin.com/in/davidtorresdesign">
 						<img src="/img/linkedin.svg" alt="" />
