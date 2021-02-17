@@ -5,8 +5,8 @@ export default function HeadCustom(props) {
 		<Head>
 			<title>{props.title}</title>
 			<meta name="description" content={props.description} />
-			<link rel="icon" href="/dtdesign-icon.jpg" />
-			<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
+			<meta property="og:title" content={props.title} key="title" />
+			<meta property="og:description" content={props.description} />
 		</Head>
 	);
 }
