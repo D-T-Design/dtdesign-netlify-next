@@ -9,7 +9,13 @@ import Navbar from "@components/Navbar";
 import client from "../client";
 import NProgress from "nprogress";
 
-NProgress.configure({ showSpinner: false });
+NProgress.configure({
+	showSpinner: false,
+	trickleSpeed: 100,
+	easing: "ease-in-out",
+	speed: 100,
+	minimum: 0.3,
+});
 
 const App = ({ Component, pageProps, download }) => {
 	const router = useRouter();
