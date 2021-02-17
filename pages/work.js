@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Header from "@components/Header";
-import SiteWrapper from "@components/SiteWrapper";
+import Head from "@components/Head";
 import { LinkIcon } from "lib/icons";
 import client from "../client";
 import urlFor from "../urlFor";
@@ -12,11 +12,7 @@ export async function getStaticProps() {
 				previewimg,
 				linkUrl
 		}`);
-	const download = await client.fetch(/* groq */ `*[_type == "download"]{
-				description,
-				"downloadURL": download.asset->url
-		}`);
-	return { props: { projects, download } };
+	return { props: { projects } };
 }
 
 export default function Work(props) {
@@ -53,13 +49,14 @@ export default function Work(props) {
 	});
 
 	return (
-		<SiteWrapper head={headSettings} download={props.download}>
+		<>
+			<Head title={headSettings.title} description={headSettings.description} />
 			<main className="body" id="work">
 				<div className="col">
 					<Header rank={1} text="My Design Work" type="headline" />
 					{projects}
 				</div>
 			</main>
-		</SiteWrapper>
+		</>
 	);
 }

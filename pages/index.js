@@ -1,17 +1,8 @@
 import Link from "next/link";
 import Header from "@components/Header";
-import SiteWrapper from "@components/SiteWrapper";
-import client from "../client";
+import Head from "@components/Head";
 
-export async function getStaticProps() {
-	const res = await client.fetch(/* groq */ `*[_type == "download"][0]{
-				description,
-				"downloadURL": upload.asset->url
-		}`);
-	return { props: { download: res } };
-}
-
-export default function Home(props) {
+export default function Home() {
 	const headSettings = {
 		title: "David Torres - Web Designer and Developer",
 		description:
@@ -30,7 +21,8 @@ export default function Home(props) {
 	];
 
 	return (
-		<SiteWrapper head={headSettings} download={props.download}>
+		<>
+			<Head title={headSettings.title} description={headSettings.description} />
 			<main className="body" id="home">
 				<div className="col">
 					<section id="header">
@@ -77,6 +69,6 @@ export default function Home(props) {
 					</section>
 				</div>
 			</main>
-		</SiteWrapper>
+		</>
 	);
 }

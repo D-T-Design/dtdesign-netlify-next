@@ -1,23 +1,15 @@
 import Link from "next/link";
-import SiteWrapper from "@components/SiteWrapper";
-import client from "../client";
+import Head from "@components/Head";
 
-export async function getStaticProps() {
-	const res = await client.fetch(/* groq */ `*[_type == "download"][0]{
-				description,
-				"downloadURL": upload.asset->url
-		}`);
-	return { props: { download: res } };
-}
-
-export default function Menu(props) {
+export default function Menu() {
 	const headSettings = {
 		title: "Browse my Web Design and Development Portfolio - David Torres Design",
 		description:
 			"Learn more about me, including what kind of work I do, who I am, and how to contact me.",
 	};
 	return (
-		<SiteWrapper head={headSettings} download={props.download}>
+		<>
+			<Head title={headSettings.title} description={headSettings.description} />
 			<main className="body" id="menu">
 				<ul className="nav-list">
 					<li>
@@ -42,6 +34,6 @@ export default function Menu(props) {
 					</li>
 				</ul>
 			</main>
-		</SiteWrapper>
+		</>
 	);
 }

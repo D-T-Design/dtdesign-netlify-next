@@ -1,17 +1,8 @@
-import SiteWrapper from "@components/SiteWrapper";
 import Header from "@components/Header";
+import Head from "@components/Head";
 import { Facebook, LinkedIn, Email, Phone } from "lib/icons";
-import client from "../client";
 
-export async function getStaticProps() {
-	const res = await client.fetch(/* groq */ `*[_type == "download"][0]{
-				description,
-				"downloadURL": upload.asset->url
-		}`);
-	return { props: { download: res } };
-}
-
-export default function Contact(props) {
+export default function Contact() {
 	const headSettings = {
 		title: "Contact David Torres for Web Design and Development",
 		description: "Contact me for help building, maintaining, fixing, or updating your website.",
@@ -34,7 +25,8 @@ export default function Contact(props) {
 		],
 	};
 	return (
-		<SiteWrapper head={headSettings} download={props.download}>
+		<>
+			<Head title={headSettings.title} description={headSettings.description} />
 			<main className="body" id="contact">
 				<Header rank={1} text={contactInfo.heading} type="headline" />
 
@@ -73,6 +65,6 @@ export default function Contact(props) {
 					</div>
 				</div>
 			</main>
-		</SiteWrapper>
+		</>
 	);
 }
