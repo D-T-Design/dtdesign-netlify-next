@@ -30,11 +30,11 @@ const App = ({ Component, pageProps, download }) => {
 };
 
 App.getInitialProps = async (ctx) => {
-	const res = await client.fetch(/* groq */ `*[_type == "download"][0]{
+	const download = await client.fetch(/* groq */ `*[_type == "download"][0]{
 				description,
 				"downloadURL": upload.asset->url
 		}`);
-	return { download: res };
+	return { download };
 };
 
 export default App;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import BlockContent from "@sanity/block-content-to-react";
 import Header from "@components/Header";
-import SiteWrapper from "@components/SiteWrapper";
+import Head from "@components/Head";
 import client from "../../client";
 import urlFor from "../../urlFor";
 
@@ -25,14 +25,10 @@ export async function getStaticProps({ params }) {
 		}`,
 		{ id }
 	);
-	const download = await client.fetch(/* groq */ `*[_type == "download"]{
-				description,
-				"downloadURL": download.asset->url
-		}`);
-	return { props: { projectData, download } };
+	return { props: { projectData } };
 }
 
-export default function Project({ projectData, download }) {
+export default function Project({ projectData }) {
 	const headSettings = {
 		title: `${projectData.title} - David Torres Web Project`,
 		description: projectData.seodescription,
@@ -49,7 +45,8 @@ export default function Project({ projectData, download }) {
 	};
 
 	return (
-		<SiteWrapper head={headSettings} download={download}>
+		<>
+			<Head title={headSettings.title} description={headSettings.description} />
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
@@ -103,6 +100,6 @@ export default function Project({ projectData, download }) {
 					</section>
 				</div>
 			</main>
-		</SiteWrapper>
+		</>
 	);
 }
