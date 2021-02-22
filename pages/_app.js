@@ -3,7 +3,7 @@ import "@styles/globals.scss";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
-import * as fbq from '../lib/fbp';
+import * as fbq from "../lib/fbp";
 
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
@@ -18,6 +18,11 @@ NProgress.configure({
 	minimum: 0.3,
 });
 
+const fbEvents = (url) => {
+	fbq.pageview();
+	fbq.event("View Content", { url });
+};
+
 const App = ({ Component, pageProps, download }) => {
 	const router = useRouter();
 	const startLoading = () => NProgress.start();
@@ -26,7 +31,7 @@ const App = ({ Component, pageProps, download }) => {
 		const handleRouteChange = (url) => {
 			NProgress.done();
 			gtag.pageview(url);
-			fbq.pageview();
+			fbEvents(url);
 		};
 		router.events.on("routeChangeStart", startLoading);
 		router.events.on("routeChangeComplete", handleRouteChange);

@@ -24,6 +24,7 @@ export default class MyDocument extends Document {
           `,
 						}}
 					/>
+					{/* Facebook Pixel */}
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `
@@ -47,6 +48,28 @@ export default class MyDocument extends Document {
 							src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
 						/>
 					</noscript>
+
+					{/* Facebook SDK */}
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `window.fbAsyncInit = function() {
+								FB.init({
+									appId      : '982745578921499',
+									cookie     : true,
+									xfbml      : true,
+									version    : 'v9.0'
+								});
+								FB.AppEvents.logPageView();   
+							};
+							(function(d, s, id){
+								var js, fjs = d.getElementsByTagName(s)[0];
+								if (d.getElementById(id)) {return;}
+								js = d.createElement(s); js.id = id;
+								js.src = "https://connect.facebook.net/en_US/sdk.js";
+								fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));`,
+						}}
+					/>
 				</Head>
 				<body>
 					<Main />
