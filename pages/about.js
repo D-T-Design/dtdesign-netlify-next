@@ -8,6 +8,7 @@ export async function getStaticProps() {
 	const about = await client.fetch(/* groq */ `*[_type == "about"][0]{
 				title,
 				seodescription,
+				seotitle,
 				description,
 				gallery
 		}`);
@@ -15,13 +16,9 @@ export async function getStaticProps() {
 }
 
 export default function About({ about }) {
-	const headSettings = {
-		title: "About David Torres - The story so far...",
-		description: about.seodescription,
-	};
 	return (
 		<main className="body about" id="page-content">
-			<Head title={headSettings.title} description={headSettings.description} />
+			<Head title={about.seotitle} description={about.seodescription} />
 
 			<div className="col">
 				<Header rank={1} text={about.title} type="headline" />
@@ -31,7 +28,7 @@ export default function About({ about }) {
 
 			<div className="col">
 				{about.gallery.map((image, index) => (
-					<img src={urlFor(image).url()} alt={image.caption} layout="responsive" key={index} />
+					<img src={urlFor(image).url()} alt={image.caption} key={index} />
 				))}
 			</div>
 		</main>

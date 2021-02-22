@@ -9,11 +9,6 @@ export default {
 			type: "string",
 		},
 		{
-			name: "seodescription",
-			title: "SEO Description",
-			type: "string",
-		},
-		{
 			name: "description",
 			title: "Description",
 			type: "array",
@@ -38,6 +33,16 @@ export default {
 					],
 				},
 			],
+		},
+		{
+			name: "seotitle",
+			title: "SEO Title",
+			type: "string",
+		},
+		{
+			name: "seodescription",
+			title: "SEO Description",
+			type: "string",
 		},
 	],
 };

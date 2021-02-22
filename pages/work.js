@@ -49,14 +49,12 @@ export default function Work(props) {
 	});
 
 	return (
-		<>
+		<main className="body" id="work">
 			<Head title={headSettings.title} description={headSettings.description} />
-			<main className="body" id="work">
-				<div className="col">
-					<Header rank={1} text="My Design Work" type="headline" />
-					{projects}
-				</div>
-			</main>
-		</>
+			<div className="col">
+				<Header rank={1} text="My Design Work" type="headline" />
+				{projects}
+			</div>
+		</main>
 	);
 }

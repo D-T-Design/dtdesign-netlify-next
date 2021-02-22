@@ -19,26 +19,8 @@ export default function Contact({ contact }) {
 		title: "Contact David Torres for Web Design and Development",
 		description: contact.seodescription,
 	};
-	const contactInfo = {
-		heading: "Contact David Torres",
-		phone: "7024730606",
-		email: "info@davidtorres.design",
-		social: [
-			{
-				title: "Facebook - David Torres Design",
-				url: "http://www.facebook.com/davidtorresdesign",
-				component: Facebook,
-			},
-			{
-				title: "LinkedIn - David Torres Design",
-				url: "http://www.linkedin.com/in/davidtorresdesign",
-				component: LinkedIn,
-			},
-		],
-	};
 	return (
 		<main className="body" id="contact">
-			{console.log(contact)}
 			<Head title={headSettings.title} description={headSettings.description} />
 			<Header rank={1} text={contact.title} type="headline" />
 
@@ -74,7 +56,6 @@ export default function Contact({ contact }) {
 								key={index}
 								title={social.title}
 							>
-								{console.log(Icon)}
 								<Icon />
 							</a>
 						);
