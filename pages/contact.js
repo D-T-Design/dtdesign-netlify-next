@@ -1,11 +1,23 @@
 import Header from "@components/Header";
 import Head from "@components/Head";
 import { Facebook, LinkedIn, Email, Phone } from "lib/icons";
+import client from "../client";
 
-export default function Contact() {
+export async function getStaticProps() {
+	const contact = await client.fetch(/* groq */ `*[_type == "contact"][0]{
+				title,
+				seodescription,
+				phone,
+				email,
+				social
+		}`);
+	return { props: { contact } };
+}
+
+export default function Contact({ contact }) {
 	const headSettings = {
 		title: "Contact David Torres for Web Design and Development",
-		description: "Contact me for help building, maintaining, fixing, or updating your website.",
+		description: contact.seodescription,
 	};
 	const contactInfo = {
 		heading: "Contact David Torres",
@@ -25,46 +37,50 @@ export default function Contact() {
 		],
 	};
 	return (
-		<>
+		<main className="body" id="contact">
+			{console.log(contact)}
 			<Head title={headSettings.title} description={headSettings.description} />
-			<main className="body" id="contact">
-				<Header rank={1} text={contactInfo.heading} type="headline" />
+			<Header rank={1} text={contact.title} type="headline" />
 
-				<div className="col">
-					<a
-						href={`tel:${contactInfo.phone}`}
-						className="contact-links"
-						target="_blank"
-						rel="noreferrer"
-					>
-						<Phone />
-						{contactInfo.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
-					</a>
-				</div>
+			<div className="col">
+				<a href={`tel:${contact.phone}`} className="contact-links" target="_blank" rel="noreferrer">
+					<Phone />
+					{contact.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
+				</a>
+			</div>
 
-				<div className="col">
-					<a
-						href={`mailto:${contactInfo.email}`}
-						className="contact-links"
-						target="_blank"
-						rel="noreferrer"
-					>
-						<Email />
-						{contactInfo.email}
-					</a>
-				</div>
+			<div className="col">
+				<a
+					href={`mailto:${contact.email}`}
+					className="contact-links"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<Email />
+					{contact.email}
+				</a>
+			</div>
 
-				<div className="col">
-					<p className="center">Message on Social</p>
-					<div className="social-links">
-						{contactInfo.social.map((social, index) => (
-							<a href={social.url} target="_blank" rel="noreferrer" key={index}>
-								<social.component />
+			<div className="col">
+				<p className="center">Message on Social</p>
+				<div className="social-links">
+					{contact.social.map((social, index) => {
+						const Icon = social.icon[0] === "Facebook" ? Facebook : LinkedIn;
+						return (
+							<a
+								href={social.url}
+								target="_blank"
+								rel="noreferrer"
+								key={index}
+								title={social.title}
+							>
+								{console.log(Icon)}
+								<Icon />
 							</a>
-						))}
-					</div>
+						);
+					})}
 				</div>
-			</main>
-		</>
+			</div>
+		</main>
 	);
 }
