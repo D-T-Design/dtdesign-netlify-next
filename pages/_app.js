@@ -3,6 +3,7 @@ import "@styles/globals.scss";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
+import * as fbq from '../lib/fbp';
 
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
@@ -25,6 +26,7 @@ const App = ({ Component, pageProps, download }) => {
 		const handleRouteChange = (url) => {
 			NProgress.done();
 			gtag.pageview(url);
+			fbq.pageview();
 		};
 		router.events.on("routeChangeStart", startLoading);
 		router.events.on("routeChangeComplete", handleRouteChange);
