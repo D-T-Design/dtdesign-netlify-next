@@ -129,12 +129,13 @@ body {
 	background-attachment: fixed;
 	background-color: $bg-color;
 	background-image: url("../public/bg.jpg");
-	background-position: center;
+	background-position: center center;
 	background-size: cover;
+	background-repeat: repeat-y;
 	color: $body-text-color;
 	font-family: $body-font;
-	padding: 1.5rem;
-	padding-bottom: 3rem;
+	padding: 0.5rem;
+	padding-bottom: 1.5rem;
 }
 
 button {
