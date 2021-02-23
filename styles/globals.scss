@@ -127,11 +127,12 @@ html {
 
 body {
 	background-attachment: fixed;
-	background-color: $bg-color;
 	background-image: url("../public/bg.jpg");
 	background-position: center center;
 	background-size: cover;
 	background-repeat: repeat-y;
+	background-color: $bg-color;
+	min-height: 100vh;
 	color: $body-text-color;
 	font-family: $body-font;
 	padding: 0.5rem;
@@ -337,10 +338,10 @@ a {
 		width: 100%;
 	}
 	&-subtitle {
+		color: $paragraph-color;
 		font-family: $body-font;
 		font-weight: normal;
 		text-transform: uppercase;
-		margin-top: -1.5rem;
 	}
 }
 .logo {
@@ -420,17 +421,46 @@ a {
 		font-style: normal;
 		font-weight: 700;
 		span {
-			background-color: $back-arrow;
+			background-color: $black-25;
+			border: 1px solid transparent;
 			display: inline-block;
 			margin-right: 1rem;
 			padding: 0.75rem;
+			svg {
+				path {
+					fill: $paragraph-color;
+				}
+			}
+		}
+		&:hover,
+		&:active {
+			span {
+				border-bottom-color: $main-cta;
+				svg {
+					path {
+						fill: $social-icons;
+					}
+				}
+			}
+		}
+	}
+	&-content {
+		padding-top: 2rem;
+		p {
+			color: $paragraph-color;
+		}
+		li {
+			color: $paragraph-color;
+			font-size: 1rem;
+			line-height: 1.5;
 		}
 	}
 	&-links {
 		display: flex;
 		justify-content: flex-start;
-		padding-top: 0.5rem;
+		padding-top: 1.5rem;
 		a {
+			align-items: center;
 			background-color: $main-cta;
 			border: 1px solid transparent;
 			display: flex;
@@ -440,6 +470,10 @@ a {
 			padding: 10px 20px;
 			position: relative;
 			text-decoration: none;
+			svg {
+				margin-left: 0.5rem;
+				fill: $social-icons;
+			}
 			&.subtle {
 				color: $border-hover;
 				background-color: $black-25;
@@ -455,11 +489,15 @@ a {
 			&:hover {
 				border-color: transparent;
 				border-bottom-color: $social-icons;
+				color: $social-icons;
 			}
 		}
 	}
-	&-photos > div {
-		margin-bottom: 1.5rem !important;
+	&-photos {
+		padding-top: 2rem;
+		& > img {
+			margin-bottom: 1rem;
+		}
 	}
 	&-thumb {
 		padding-bottom: 1rem;
@@ -543,6 +581,21 @@ a {
 #skills,
 #projects {
 	width: 100%;
+}
+
+#project {
+	.grid {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(6, auto);
+		grid-template-areas:
+			"headline"
+			"subtitle"
+			"links"
+			"content"
+			"photos"
+			"back";
+		height: 100%;
+	}
 }
 
 /* Make clicks pass-through */
@@ -740,14 +793,20 @@ a {
 		}
 		.grid {
 			grid-template-columns: 30% 1fr;
-			gap: 2rem;
-			grid-template-rows: 4rem 3rem 1fr 3rem;
+			grid-template-rows: 3rem auto auto 1fr 3rem;
 			grid-template-areas:
 				"headline photos"
+				"subtitle photos"
 				"links photos"
 				"content photos"
 				"back photos";
 			height: 100%;
+		}
+		.heading {
+			&-subtitle {
+				color: $paragraph-color;
+				grid-area: subtitle;
+			}
 		}
 	}
 
@@ -766,6 +825,7 @@ a {
 			overflow-y: scroll;
 			max-height: 720px;
 			scrollbar-color: $scroll-bar $scroll-bg;
+			padding-left: 2rem;
 			&::-webkit-scrollbar {
 				width: 15px;
 				height: 15px;
@@ -780,6 +840,7 @@ a {
 		}
 		&-back {
 			grid-area: back;
+			padding-top: 2rem;
 		}
 	}
 

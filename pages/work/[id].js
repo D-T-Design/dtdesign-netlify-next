@@ -2,6 +2,7 @@ import Link from "next/link";
 import BlockContent from "@sanity/block-content-to-react";
 import Header from "@components/Header";
 import Head from "@components/Head";
+import { LinkIcon, ArrowL } from "lib/icons";
 import client from "../../client";
 import urlFor from "../../urlFor";
 
@@ -16,6 +17,7 @@ export async function getStaticProps({ params }) {
 	const projectData = await client.fetch(
 		/* groq */ `*[_type == "project" && slug.current == $id][0]{
 				title,
+				subtitle,
 				description,
 				seodescription,
 				slug,
@@ -50,11 +52,12 @@ export default function Project({ projectData }) {
 			<main className="body" id="project">
 				<div className="grid">
 					<Header rank={1} text={projectData.title} type="headline" />
+					<Header rank={4} text={projectData.subtitle} type="subtitle" />
 
 					<section className="project-links">
 						{projectData.linkUrl ? (
 							<a href={projectData.linkUrl} className="btn" target="_blank" rel="noopener">
-								Link
+								Link <LinkIcon />
 							</a>
 						) : null}
 						{projectData.codeUrl ? (
@@ -92,7 +95,7 @@ export default function Project({ projectData }) {
 						<Link href="/work">
 							<a className="project-back">
 								<span>
-									<img src="/img/arrow-l.svg" alt="" />
+									<ArrowL />
 								</span>
 								Back To My Work
 							</a>
