@@ -1,0 +1,36 @@
+{
+	"name": "David Torres Design Portfolio",
+	"short_name": "DTDesign",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#bd3504",
+	"theme_color": "#bd3504",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "/dtdesign-icon_72.jpg",
+			"type": "image/jpg",
+			"sizes": "64x64"
+		},
+		{
+			"src": "/dtdesign-icon_128.png",
+			"type": "image/jpg",
+			"sizes": "128x128"
+		},
+		{
+			"src": "/dtdesign-icon_192.png",
+			"type": "image/jpg",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/dtdesign-icon_384.png",
+			"type": "image/jpg",
+			"sizes": "384x384"
+		},
+		{
+			"src": "/dtdesign-icon_512.png",
+			"type": "image/jpg",
+			"sizes": "512x512"
+		}
+	]
+}
