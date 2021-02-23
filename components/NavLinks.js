@@ -18,7 +18,7 @@ const socialLinks = [
 export default function NavLinks(props) {
 	return (
 		<div className="links">
-			<a href={props.download.downloadURL} title={props.download.description}>
+			<a href={props.download.downloadURL} title={props.download.description} className="download-btn">
 				Download Resume <img src="/img/pdf.svg" alt="Click Here to Download my Resume" />
 			</a>
 			<div className="social">

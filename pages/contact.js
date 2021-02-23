@@ -44,7 +44,6 @@ export default function Contact({ contact }) {
 			</div>
 
 			<div className="col">
-				<p className="center">Message on Social</p>
 				<div className="social-links">
 					{contact.social.map((social, index) => {
 						const Icon = social.icon[0] === "Facebook" ? Facebook : LinkedIn;
