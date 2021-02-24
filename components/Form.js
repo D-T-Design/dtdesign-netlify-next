@@ -27,16 +27,11 @@ export default function ContactForm() {
 			name="contact"
 			method="POST"
 			action="/"
+			netlify-honeypot="bot-field"
 			data-netlify="true"
-			data-netlify-recaptcha="true"
 			onSubmit={handleSubmit}
 		>
 			<input type="hidden" name="form-name" value="contact" />
-			<p class="hidden">
-				<label>
-					Don’t fill this out if you’re human: <input name="bot-field" />
-				</label>
-			</p>
 			<p>
 				<label htmlFor="yourname">Your Name:</label> <br />
 				<input type="text" name="name" id="yourname" />
@@ -50,8 +45,12 @@ export default function ContactForm() {
 				<textarea name="message" id="yourmessage"></textarea>
 			</p>
 			<p>
-				<div data-netlify-recaptcha="true"></div>
 				<button type="submit">Send</button>
+			</p>
+			<p class="hidden">
+				<label>
+					Don’t fill this out if you’re human: <input name="bot-field" />
+				</label>
 			</p>
 		</form>
 	);
