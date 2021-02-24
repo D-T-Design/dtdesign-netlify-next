@@ -350,6 +350,12 @@ a {
 	}
 }
 
+.hidden {
+	visibility: hidden;
+	position: absolute;
+	z-index:-999;
+}
+
 .menu {
 	&-large {
 		display: none;

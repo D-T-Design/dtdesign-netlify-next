@@ -23,10 +23,21 @@ const handleSubmit = (event) => {
 
 export default function ContactForm() {
 	return (
-		<form name="contact" method="POST" action="/" data-netlify="true" onSubmit={handleSubmit}>
+		<form
+			name="contact"
+			method="POST"
+			action="/"
+			data-netlify="true"
+			data-netlify-recaptcha="true"
+			onSubmit={handleSubmit}
+		>
 			<input type="hidden" name="form-name" value="contact" />
+			<p class="hidden">
+				<label>
+					Don’t fill this out if you’re human: <input name="bot-field" />
+				</label>
+			</p>
 			<p>
-				<input type="text" name="firstname" id="firstname" />
 				<label htmlFor="yourname">Your Name:</label> <br />
 				<input type="text" name="name" id="yourname" />
 			</p>
@@ -39,6 +50,7 @@ export default function ContactForm() {
 				<textarea name="message" id="yourmessage"></textarea>
 			</p>
 			<p>
+				<div data-netlify-recaptcha="true"></div>
 				<button type="submit">Send</button>
 			</p>
 		</form>
