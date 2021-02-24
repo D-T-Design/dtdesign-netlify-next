@@ -18,6 +18,9 @@ export default function Home() {
 		{ id: "html", title: "HTML5" },
 		{ id: "css", title: "CSS3" },
 		{ id: "js", title: "JavaScript" },
+		{ id: "webflow", title: "Webflow" },
+		{ id: "nextjs", title: "NextJS" },
+		{ id: "netlify", title: "Netlify" },
 	];
 
 	return (
@@ -45,7 +48,7 @@ export default function Home() {
 					</section>
 
 					<section id="skills">
-						<Header rank={2} text="Skills and Technology" type="headline" />
+						<Header rank={2} text="Skills and Technology I Use" type="headline" />
 
 						<div className="skills">
 							{skills.map((skill, index) => (

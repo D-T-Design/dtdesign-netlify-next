@@ -1,5 +1,6 @@
 import Header from "@components/Header";
 import Head from "@components/Head";
+import Form from "@components/Form";
 import { Facebook, LinkedIn, Email, Phone } from "lib/icons";
 import client from "../client";
 
@@ -60,6 +61,9 @@ export default function Contact({ contact }) {
 						);
 					})}
 				</div>
+			</div>
+			<div className="col">
+				<Form />
 			</div>
 		</main>
 	);
