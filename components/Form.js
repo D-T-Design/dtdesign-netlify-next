@@ -1,15 +1,39 @@
 import { useRouter } from "next/router";
 
 export default function ContactForm() {
+	const router = useRouter();
+
+	function encode(data) {
+		return Object.keys(data)
+			.map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+			.join("&");
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: encode({
+				"form-name": event.target.getAttribute("name"),
+				...contact,
+			}),
+		})
+			.then(() => router.push("/"))
+			.catch((error) => alert(error));
+	};
+
 	return (
 		<form
 			name="contact"
 			method="POST"
-			action="/"
+			// action="/"
 			netlify-honeypot="bot-field"
 			data-netlify="true"
+			onSubmit={handleSubmit}
 		>
 			<input type="hidden" name="form-name" value="contact" />
+
 			<p className="name">
 				<label htmlFor="yourname">Your Name:</label> <br />
 				<input type="text" name="name" id="yourname" />
