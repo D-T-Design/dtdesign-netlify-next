@@ -7,7 +7,7 @@ $main-cta: #d94814;
 $cta-hover: #bd3504;
 $body-text-color: #ffffff;
 $menu-text-color: #9b9b9b;
-$paragraph-color: #8c8c8c;
+$paragraph-color: #b0b0b0;
 $back-arrow: #3f3f3f;
 $social-icons: #ffffff;
 $bg-color: #747474;
@@ -141,7 +141,7 @@ body {
 
 button {
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.25);
+	background-color: $black-25;
 	border: none;
 	color: $body-text-color;
 	cursor: pointer;
@@ -154,6 +154,9 @@ button {
 	position: relative;
 	img {
 		margin-left: 1rem;
+	}
+	&[type="submit"] {
+		background-color: $main-cta;
 	}
 }
 
@@ -236,6 +239,49 @@ a {
 	min-height: 83%;
 	overflow: hidden;
 	padding: 1.5rem;
+}
+.form {
+	form {
+		display: flex;
+		flex-flow: row wrap;
+	}
+	input,
+	textarea {
+		background-color: $back-arrow;
+		border: 1px solid $menu-text-color;
+		color: $paragraph-color;
+		font-family: $body-font;
+		font-size: 1.15rem;
+		line-height: 1.5;
+		min-height: 1.5em;
+		padding: 0.5em;
+		transition: all 0.1s;
+		width: 100%;
+		&:hover,
+		&:focus {
+			background-color: $body-text-color;
+			color: $black-75;
+		}
+	}
+	textarea {
+		min-height: 6em;
+	}
+	label {
+		color: $body-text-color;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1ch;
+	}
+	p {
+		width: 100%;
+		button {
+			margin: 0;
+			margin-right: auto;
+		}
+		&.hidden {
+			width: 1px;
+		}
+	}
 }
 
 .grid {
@@ -351,9 +397,9 @@ a {
 }
 
 .hidden {
-	visibility: hidden;
 	position: absolute;
-	z-index:-999;
+	visibility: hidden;
+	z-index: -999;
 }
 
 .menu {
@@ -589,6 +635,14 @@ a {
 	width: 100%;
 }
 
+#contact {
+	.grid {
+		width: 100%;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(2, auto);
+	}
+}
+
 #project {
 	.grid {
 		grid-template-columns: 1fr;
@@ -707,6 +761,15 @@ a {
 			margin-right: auto;
 		}
 	}
+	.form {
+		form {
+			justify-content: space-between;
+		}
+		.name,
+		.email {
+			width: 49%;
+		}
+	}
 
 	#menu .nav-list {
 		display: grid;
@@ -715,10 +778,14 @@ a {
 	}
 	#contact {
 		justify-content: space-between;
-		.col {
-			width: 48%;
-			&:last-child {
-				width: 100%;
+		.contact {
+			display: flex;
+			justify-content: space-between;
+			a {
+				width: 38%;
+			}
+			.social-links {
+				width: 18%;
 			}
 		}
 	}
@@ -755,7 +822,15 @@ a {
 			flex-direction: row;
 		}
 	}
-
+	.form {
+		form {
+			justify-content: space-between;
+		}
+		.name,
+		.email {
+			width: 49%;
+		}
+	}
 	.project-thumb {
 		width: 31%;
 	}
@@ -782,11 +857,25 @@ a {
 		width: 100%;
 	}
 	#contact {
-		.col {
-			width: 42%;
-			&:last-child {
-				width: 14%;
+		justify-content: space-between;
+		h2 {
+			margin-top: 0;
+		}
+		.contact {
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			flex-flow: column wrap;
+			a {
+				width: auto;
 			}
+			.social-links {
+				width: auto;
+			}
+		}
+		.grid {
+			grid-template-columns: 40% 1fr;
+			grid-template-rows: auto;
 		}
 	}
 	#project {
@@ -938,9 +1027,6 @@ a {
 
 	#contact {
 		justify-content: flex-start;
-		.col {
-			width: auto;
-		}
 		.center {
 			text-align: left;
 		}

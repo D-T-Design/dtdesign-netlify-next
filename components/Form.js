@@ -1,27 +1,32 @@
 import { useRouter } from "next/router";
 
-function encode(data) {
-	return Object.keys(data)
-		.map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-		.join("&");
-}
-
-const handleSubmit = (event) => {
-	const router = useRouter();
-	event.preventDefault();
-	fetch("/", {
-		method: "POST",
-		headers: { "Content-Type": "application/x-www-form-urlencoded" },
-		body: encode({
-			"form-name": event.target.getAttribute("contact"),
-			...name,
-		}),
-	})
-		.then(() => router.push("/"))
-		.catch((error) => alert(error));
-};
-
 export default function ContactForm() {
+	/*
+  Netlify Forms
+  */
+	function encode(data) {
+		return Object.keys(data)
+			.map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+			.join("&");
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const router = useRouter();
+		const body = encode({
+			"form-name": event.target.getAttribute("contact"),
+			...contact,
+    });
+    console.log(body);
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body,
+		})
+			.then(() => router.push("/"))
+			.catch((error) => alert(error));
+	};
+
 	return (
 		<form
 			name="contact"
@@ -32,22 +37,26 @@ export default function ContactForm() {
 			onSubmit={handleSubmit}
 		>
 			<input type="hidden" name="form-name" value="contact" />
-			<p>
+			<p className="name">
 				<label htmlFor="yourname">Your Name:</label> <br />
 				<input type="text" name="name" id="yourname" />
 			</p>
-			<p>
+
+			<p className="email">
 				<label htmlFor="youremail">Your Email:</label> <br />
 				<input type="email" name="email" id="youremail" />
 			</p>
-			<p>
+
+			<p className="message">
 				<label htmlFor="yourmessage">Message:</label> <br />
 				<textarea name="message" id="yourmessage"></textarea>
 			</p>
-			<p>
-				<button type="submit">Send</button>
+
+			<p className="send">
+				<button type="submit">Send Message</button>
 			</p>
-			<p class="hidden">
+
+			<p className="hidden">
 				<label>
 					Don’t fill this out if you’re human: <input name="bot-field" />
 				</label>
