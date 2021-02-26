@@ -10,6 +10,7 @@ import project from "./project";
 import download from "./download";
 import about from "./about";
 import contact from "./contact";
+import privacy from "./privacy";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +27,7 @@ export default createSchema({
 		blockContent,
 		project,
 		about,
-		contact
+		contact,
+		privacy,
 	]),
 });

@@ -1,8 +1,14 @@
+import Link from "next/link";
+
 export default function Footer(props) {
 	return (
 		<section className="footer">
 			<div className="links">
-				<a href={props.download.downloadURL} title={props.download.description} className="download-btn">
+				<a
+					href={props.download.downloadURL}
+					title={props.download.description}
+					className="download-btn"
+				>
 					Download Resume <img src="/img/pdf.svg" alt="Click Here to Download my Resume" />
 				</a>
 				<div className="social">
@@ -18,8 +24,8 @@ export default function Footer(props) {
 				</div>
 			</div>
 			<p>
-				<a href="https://google.com">Privacy Policy</a>
-				<span>© David Torres 2020</span>
+				<Link href="/privacy">Privacy Policy</Link>
+				<span>© David Torres {new Date().getFullYear()}</span>
 			</p>
 		</section>
 	);

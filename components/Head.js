@@ -13,7 +13,7 @@ export default function HeadCustom(props) {
 			<meta property="og:url" content={`https://davidtorres.design${currentURL}`} />
 			<meta name="theme-color" content="#bd3504" />
 			<link rel="manifest" href="/manifest.json" />
-			<link rel="apple-touch-icon" href="/dtdesign-icon_96.png" />
+			<link rel="apple-touch-icon" href="/dtdesign-icon_72.jpg" />
 			<meta name="apple-mobile-web-app-status-bar" content="#bd3504" />
 		</Head>
 	);

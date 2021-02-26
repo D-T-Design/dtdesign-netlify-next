@@ -50,5 +50,20 @@ export default {
 				},
 			],
 		},
+		{
+			name: "avatar",
+			title: "Avatar",
+			type: "image",
+			fields: [
+				{
+					name: "caption",
+					type: "string",
+					title: "Caption",
+					options: {
+						isHighlighted: true,
+					},
+				},
+			],
+		},
 	],
 };

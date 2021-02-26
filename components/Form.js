@@ -38,7 +38,6 @@ export default function SendMessageForm() {
 		<form
 			name="contact"
 			method="POST"
-			// action="/"
 			netlify-honeypot="bot-field"
 			data-netlify="true"
 			onSubmit={handleSubmit}
@@ -53,7 +52,7 @@ export default function SendMessageForm() {
 					value={formData.name}
 					id="name"
 					onChange={updateFormData}
-					required
+					required={true}
 				/>
 			</p>
 
@@ -65,7 +64,7 @@ export default function SendMessageForm() {
 					value={formData.email}
 					id="email"
 					onChange={updateFormData}
-					required
+					required={true}
 				/>
 			</p>
 
@@ -76,7 +75,7 @@ export default function SendMessageForm() {
 					value={formData.message}
 					id="message"
 					onChange={updateFormData}
-					required
+					required={true}
 				></textarea>
 			</p>
 
