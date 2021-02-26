@@ -16,7 +16,7 @@ export default function ContactForm() {
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: encode({
 				"form-name": event.target.getAttribute("name"),
-				...contact,
+				...name,
 			}),
 		})
 			.then(() => router.push("/"))
