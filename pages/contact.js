@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Header from "@components/Header";
 import Head from "@components/Head";
 import Form from "@components/Form";
