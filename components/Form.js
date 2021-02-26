@@ -1,29 +1,5 @@
 import { useRouter } from "next/router";
 
-/*
-  Netlify Forms
-  */
-function encode(data) {
-	return Object.keys(data)
-		.map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-		.join("&");
-}
-
-const handleSubmit = (event) => {
-	event.preventDefault();
-	const router = useRouter();
-	fetch("/", {
-		method: "POST",
-		headers: { "Content-Type": "application/x-www-form-urlencoded" },
-		body: encode({
-			"form-name": event.target.getAttribute("contact"),
-			...contact,
-		}),
-	})
-		.then(() => router.push("/"))
-		.catch((error) => alert(error));
-};
-
 export default function ContactForm() {
 	return (
 		<form
@@ -32,7 +8,6 @@ export default function ContactForm() {
 			action="/"
 			netlify-honeypot="bot-field"
 			data-netlify="true"
-			onSubmit={handleSubmit}
 		>
 			<input type="hidden" name="form-name" value="contact" />
 			<p className="name">
