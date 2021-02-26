@@ -1,32 +1,30 @@
 import { useRouter } from "next/router";
 
-export default function ContactForm() {
-	/*
+/*
   Netlify Forms
   */
-	function encode(data) {
-		return Object.keys(data)
-			.map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-			.join("&");
-	}
+function encode(data) {
+	return Object.keys(data)
+		.map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+		.join("&");
+}
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const router = useRouter();
-		const body = encode({
+const handleSubmit = (event) => {
+	event.preventDefault();
+	const router = useRouter();
+	fetch("/", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: encode({
 			"form-name": event.target.getAttribute("contact"),
 			...contact,
-    });
-    console.log(body);
-		fetch("/", {
-			method: "POST",
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body,
-		})
-			.then(() => router.push("/"))
-			.catch((error) => alert(error));
-	};
+		}),
+	})
+		.then(() => router.push("/"))
+		.catch((error) => alert(error));
+};
 
+export default function ContactForm() {
 	return (
 		<form
 			name="contact"
