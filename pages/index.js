@@ -1,77 +1,73 @@
 import Link from "next/link";
 import Header from "@components/Header";
 import Head from "@components/Head";
+import BlockContent from "@sanity/block-content-to-react";
+import client from "../client";
+import urlFor from "../urlFor";
 
-export default function Home() {
-	const headSettings = {
-		title: "David Torres - Web Designer and Developer",
-		description:
-			"Web specialist with over 10 years of experience.  Use modern technology to achieve your web goals!",
+export async function getStaticProps() {
+	const content = await client.fetch(/* groq */ `*[_type == "index"][0]{
+				title,
+				subtitle,
+				description,
+				tech,
+				seodescription,
+				seotitle,
+				seophoto,
+		}`);
+	return { props: { content } };
+}
+export default function Home({ content }) {
+	const serializers = {
+		marks: {
+			link: (props) => (
+				<Link href={props.mark.href}>
+					<a>{props.children}</a>
+				</Link>
+			),
+		},
 	};
 
-	const skills = [
-		{ id: "photoshop", title: "Adobe Photoshop" },
-		{ id: "xd", title: "Adobe XD" },
-		{ id: "ai", title: "Adobe Illustrator" },
-		{ id: "shopify", title: "Shopify" },
-		{ id: "react", title: "ReactJS" },
-		{ id: "html", title: "HTML5" },
-		{ id: "css", title: "CSS3" },
-		{ id: "js", title: "JavaScript" },
-		{ id: "webflow", title: "Webflow" },
-		{ id: "nextjs", title: "NextJS" },
-		{ id: "netlify", title: "Netlify" },
-	];
-
 	return (
-		<>
-			<Head title={headSettings.title} description={headSettings.description} />
-			<main className="body" id="home">
-				<div className="col">
-					<section id="header">
-						<Header rank={1} text="Web Designer and Developer" type="headline" />
+		<main className="body" id="home">
+			<Head
+				title={content.seotitle}
+				description={content.seodescription}
+				seophoto={urlFor(content.seophoto).url()}
+			/>
 
-						<p>
-							I’m David Torres, a web specialist with over 10 years of experience. I have the eye
-							and experience for design, along with the technical skill of development. Your
-							business benefits from me on your team, I love collaborating with other professionals
-							and learning how they think. From basic websites to web apps, we can work together to
-							get your projects done!
-						</p>
+			<div className="col">
+				<section id="header">
+					{console.log(content)}
+					<Header rank={1} text={content.title} type="headline" />
 
-						<p>
-							Browse my portfolio to see my work and style,{" "}
-							<Link href="/contact">
-								contact me if you want to work with me to achieve your digital goals!
-							</Link>
-						</p>
-					</section>
+					<BlockContent blocks={content.description} serializers={serializers} />
+				</section>
 
-					<section id="skills">
-						<Header rank={2} text="Skills and Technology I Use" type="headline" />
+				<section id="skills">
+					<Header rank={2} text={content.subtitle} type="headline" />
 
-						<div className="skills">
-							{skills.map((skill, index) => (
-								<div className="skill-container" key={index}>
-									<img src={`/img/${skill.id}.svg`} alt={skill.title} title={skill.title} />
-								</div>
-							))}
-						</div>
-					</section>
-				</div>
+					<div className="skills">
+						{content.tech.map((skill, index) => (
+							<div className="skill-container" key={index}>
+								<img src={`/img/${skill.value}.svg`} alt={skill.title} title={skill.title} />
+							</div>
+						))}
+					</div>
+				</section>
+			</div>
 
-				<div className="col">
-					<section id="projects">
-						<Header rank={2} text="View My Projects" type="headline" />
+			<div className="col">
+				<section id="projects">
+					<Header rank={2} text="View My Projects" type="headline" />
 
-						<Link href="/work">
-							<a title="See my design and dev work...">
-								<img src="/img/photo.svg" alt="" />
-							</a>
-						</Link>
-					</section>
-				</div>
-			</main>
-		</>
+					<Link href="/work">
+						<a title="See my design and dev work...">
+							<img src="/img/photo.svg" alt="" />
+						</a>
+					</Link>
+				</section>
+			</div>
+		</main>
 	);
 }

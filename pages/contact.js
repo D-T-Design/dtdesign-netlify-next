@@ -26,7 +26,7 @@ export default function Contact({ contact }) {
 		const imgUrl = urlFor(contact.avatar).height(150).url();
 		return (
 			<span className="avatar">
-				<img src={imgUrl} alt={contact.caption} />
+				<img src={imgUrl} alt={contact.avatar.caption} />
 			</span>
 		);
 	};
