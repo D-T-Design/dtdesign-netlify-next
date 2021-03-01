@@ -33,7 +33,11 @@ export default function Work({ projects }) {
 					const projectPreviewUrl = urlFor(project.previewimg).url();
 					return (
 						<div className="project-thumb" key={i}>
-							<h2>{project.title}</h2>
+							<h2>
+								<Link href={`/work/${project.slug.current}`}>
+									<a title={project.title}>{project.title}</a>
+								</Link>
+							</h2>
 							<h4>{project.subtitle}</h4>
 
 							<Link href={`/work/${project.slug.current}`}>

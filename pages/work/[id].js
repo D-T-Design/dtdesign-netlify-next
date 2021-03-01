@@ -23,7 +23,8 @@ export async function getStaticProps({ params }) {
 				slug,
 				tech,
 				gallery,
-				linkUrl
+				linkUrl,
+				codeUrl
 		}`,
 		{ id }
 	);

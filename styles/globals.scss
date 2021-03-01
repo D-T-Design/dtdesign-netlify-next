@@ -201,12 +201,21 @@ a {
 	&.cta {
 		background-color: $main-cta;
 		border-bottom: 2px solid transparent;
+		box-shadow: none;
 		transition: all 0.1s ease-in-out;
 		&:hover {
 			background-color: $cta-hover;
 			border-color: $body-text-color;
 			color: $body-text-color;
 		}
+	}
+}
+
+.about {
+	img {
+		width: 400px;
+		max-width: 100%;
+		margin: 1rem;
 	}
 }
 
@@ -219,6 +228,57 @@ a {
 	img {
 		height: auto;
 		width: 50px;
+	}
+}
+#home {
+	.avatar {
+		height: 150px;
+		width: 150px;
+		img {
+			height: auto;
+			width: 150px;
+		}
+	}
+	a {
+		.preview {
+			display: block;
+			position: relative;
+			img {
+				width: 735px;
+				max-width: 100%;
+				height: auto;
+				margin-bottom: -3px;
+			}
+			.arrow {
+				border: 1px solid transparent;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 1rem 2rem;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				height: 50px;
+				background-color: $main-cta;
+				svg {
+					path {
+						fill: $body-text-color;
+					}
+					height: 1.1em;
+					margin-left: 0.5rem;
+				}
+			}
+		}
+		&:hover {
+			filter:brightness(1.5);
+			.preview {
+				.arrow {
+					border-bottom-color: $body-text-color;
+					color: white;
+					background-color: $cta-hover;
+				}
+			}
+		}
 	}
 }
 
@@ -549,10 +609,24 @@ a {
 		p {
 			color: $paragraph-color;
 		}
-		li {
-			color: $paragraph-color;
-			font-size: 1rem;
-			line-height: 1.5;
+		ul {
+			background-color: rgba(255, 255, 255, 0.05);
+			padding: 1rem 2rem;
+			list-style-type: disc;
+			li {
+				color: $paragraph-color;
+				font-size: 1rem;
+				line-height: 1.5;
+				font-style: italic;
+			}
+			&:last-child {
+				background: none;
+				padding: 0;
+				list-style: none;
+				li {
+					font-style: normal;
+				}
+			}
 		}
 	}
 	&-links {
@@ -563,6 +637,7 @@ a {
 			align-items: center;
 			background-color: $main-cta;
 			border: 1px solid transparent;
+			box-shadow: none;
 			display: flex;
 			font-size: 1.25rem;
 			margin: 0;
@@ -577,6 +652,7 @@ a {
 			&.subtle {
 				color: $border-hover;
 				background-color: $black-25;
+				box-shadow: none;
 				font-family: interstate, Arial, Helvetica, sans-serif;
 				font-style: italic;
 				margin-right: 1em;
@@ -585,6 +661,9 @@ a {
 				svg {
 					margin-left: 1em;
 				}
+			}
+			&.cta {
+				box-shadow: none;
 			}
 			&:hover {
 				border-color: transparent;
@@ -601,9 +680,21 @@ a {
 	}
 	&-thumb {
 		padding-bottom: 1rem;
+		a {
+			font-style: normal;
+			text-decoration: none;
+		}
+		&:hover {
+			img {
+				filter: brightness(1.75);
+			}
+		}
 		h2 {
 			line-height: 1;
 			margin-bottom: 0.25rem;
+			a {
+				box-shadow: none;
+			}
 		}
 		h4 {
 			color: $paragraph-color;
@@ -613,6 +704,8 @@ a {
 			margin-bottom: 1.5rem;
 		}
 		img {
+			position: relative;
+			z-index: 0;
 			width: 100%;
 		}
 	}
@@ -893,6 +986,10 @@ a {
 	}
 	.project-thumb {
 		width: 31%;
+		margin-right: 3%;
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
 	.social {
@@ -908,7 +1005,8 @@ a {
 			width: 100%;
 			display: flex;
 			flex-flow: row wrap;
-			justify-content: space-between;
+			justify-content: flex-start;
+			margin-right: 3%;
 		}
 	}
 
@@ -978,7 +1076,7 @@ a {
 		&-photos {
 			grid-area: photos;
 			overflow-y: scroll;
-			max-height: 720px;
+			max-height: 80vh;
 			scrollbar-color: $scroll-bar $scroll-bg;
 			padding-left: 2rem;
 			&::-webkit-scrollbar {

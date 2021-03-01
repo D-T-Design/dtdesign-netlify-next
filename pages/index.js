@@ -4,9 +4,11 @@ import Head from "@components/Head";
 import BlockContent from "@sanity/block-content-to-react";
 import client from "../client";
 import urlFor from "../urlFor";
+import { ArrowR } from "lib/icons";
 
 export async function getStaticProps() {
 	const content = await client.fetch(/* groq */ `*[_type == "index"][0]{
+				avatar,
 				title,
 				subtitle,
 				description,
@@ -14,6 +16,7 @@ export async function getStaticProps() {
 				seodescription,
 				seotitle,
 				seophoto,
+				previewimg
 		}`);
 	return { props: { content } };
 }
@@ -27,6 +30,25 @@ export default function Home({ content }) {
 			),
 		},
 	};
+	const Avatar = () => {
+		const imgUrl = urlFor(content.avatar).height(300).url();
+		return (
+			<span className="avatar">
+				<img src={imgUrl} alt={content.avatar.caption} />
+			</span>
+		);
+	};
+	const PreviewImg = () => {
+		const imgUrl = urlFor(content.previewimg).url();
+		return (
+			<span className="preview">
+				<img src={imgUrl} alt={content.previewimg.caption} />
+				<span className="arrow">
+					See my work <ArrowR />
+				</span>
+			</span>
+		);
+	};
 
 	return (
 		<main className="body" id="home">
@@ -38,7 +60,7 @@ export default function Home({ content }) {
 
 			<div className="col">
 				<section id="header">
-					{console.log(content)}
+					<Avatar />
 					<Header rank={1} text={content.title} type="headline" />
 
 					<BlockContent blocks={content.description} serializers={serializers} />
@@ -62,8 +84,8 @@ export default function Home({ content }) {
 					<Header rank={2} text="View My Projects" type="headline" />
 
 					<Link href="/work">
-						<a title="See my design and dev work...">
-							<img src="/img/photo.svg" alt="" />
+						<a title={content.previewimg.caption}>
+							<PreviewImg />
 						</a>
 					</Link>
 				</section>

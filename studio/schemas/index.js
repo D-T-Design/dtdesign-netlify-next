@@ -4,6 +4,21 @@ export default {
 	type: "document",
 	fields: [
 		{
+			name: "avatar",
+			title: "Avatar",
+			type: "image",
+			fields: [
+				{
+					name: "caption",
+					type: "string",
+					title: "Caption",
+					options: {
+						isHighlighted: true,
+					},
+				},
+			],
+		},
+		{
 			name: "title",
 			title: "Title",
 			type: "string",
@@ -47,6 +62,21 @@ export default {
 			name: "seophoto",
 			title: "SEO Photo",
 			type: "image",
+		},
+		{
+			title: "Preview Image",
+			name: "previewimg",
+			type: "image",
+			fields: [
+				{
+					name: "caption",
+					type: "string",
+					title: "Caption",
+					options: {
+						isHighlighted: true,
+					},
+				},
+			],
 		},
 	],
 };

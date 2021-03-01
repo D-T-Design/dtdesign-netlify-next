@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@components/Header";
 import Head from "@components/Head";
 import BlockContent from "@sanity/block-content-to-react";
@@ -14,6 +15,15 @@ export async function getStaticProps() {
 		}`);
 	return { props: { about } };
 }
+const serializers = {
+	marks: {
+		link: (props) => (
+			<Link href={props.mark.href}>
+				<a>{props.children}</a>
+			</Link>
+		),
+	},
+};
 
 export default function About({ about }) {
 	return (
@@ -23,7 +33,7 @@ export default function About({ about }) {
 			<div className="col">
 				<Header rank={1} text={about.title} type="headline" />
 
-				<BlockContent blocks={about.description} />
+				<BlockContent blocks={about.description} serializers={serializers} />
 			</div>
 
 			<div className="col">
