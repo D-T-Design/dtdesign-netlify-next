@@ -23,6 +23,7 @@ export default function HeadCustom(props) {
 			<link rel="manifest" href="/manifest.json" />
 			<link rel="apple-touch-icon" href="/dtdesign-icon_72.jpg" />
 			<meta name="apple-mobile-web-app-status-bar" content="#bd3504" />
+			<meta name="facebook-domain-verification" content="5nkqqoc3d1pln9fja35b66hzykw005" />
 		</Head>
 	);
 }
