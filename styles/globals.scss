@@ -1046,7 +1046,7 @@ a {
 		}
 		.grid {
 			grid-template-columns: 30% 1fr;
-			grid-template-rows: 3rem auto auto 1fr 3rem;
+			grid-template-rows: min-content auto auto 1fr 3rem;
 			grid-template-areas:
 				"headline photos"
 				"subtitle photos"
