@@ -42,6 +42,7 @@ export default {
 								list: [
 									{ title: "Facebook", value: "Facebook" },
 									{ title: "LinkedIn", value: "LinkedIn" },
+									{ title: "Github", value: "Github" },
 								],
 								layout: "radio",
 							},
