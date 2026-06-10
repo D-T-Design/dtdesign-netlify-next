@@ -1,6 +1,6 @@
 const socialLinks = [
 	{
-		url: "http://www.linkedin.com/in/davidtorresdesign",
+		url: "https://www.linkedin.com/in/davidtorresdesign",
 		img: "/img/linkedin.svg",
 		title: "LinkedIn - David Torres Design",
 	},

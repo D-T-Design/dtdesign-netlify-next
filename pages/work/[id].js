@@ -26,7 +26,7 @@ export async function getStaticProps({ params }) {
 				linkUrl,
 				codeUrl
 		}`,
-    { id }
+    { id },
   );
   return { props: { projectData } };
 }
@@ -93,7 +93,7 @@ export default function Project({ projectData }) {
           </section>
 
           <section className="project-back">
-            <Link href="/work">
+            <Link href="/work" legacyBehavior>
               <a className="project-back">
                 <span>
                   <ArrowL />

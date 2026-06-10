@@ -24,7 +24,7 @@ export default function Home({ content }) {
   const components = {
     marks: {
       link: (props) => (
-        <Link href={props.value.href}>
+        <Link href={props.value.href} legacyBehavior>
           <a>{props.children}</a>
         </Link>
       ),
@@ -82,7 +82,7 @@ export default function Home({ content }) {
         <section id="projects">
           <Header rank={2} text="View My Projects" type="headline" />
 
-          <Link href="/work">
+          <Link href="/work" legacyBehavior>
             <a title={content.previewimg.caption}>
               <PreviewImg />
             </a>

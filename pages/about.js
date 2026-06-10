@@ -18,7 +18,7 @@ export async function getStaticProps() {
 const components = {
   marks: {
     link: (props) => (
-      <Link href={props.value.href}>
+      <Link href={props.value.href} legacyBehavior>
         <a>{props.children}</a>
       </Link>
     ),
