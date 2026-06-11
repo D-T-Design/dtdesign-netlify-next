@@ -1320,6 +1320,7 @@ button,
   position: sticky;
   top: 0.75rem;
   z-index: 10;
+  width: 100%;
 }
 
 .logo img {
@@ -1364,7 +1365,6 @@ button,
   align-items: center;
   display: flex;
   gap: 0.75rem;
-  margin-left: auto;
 }
 
 .links a.download-btn,
@@ -1511,6 +1511,41 @@ button,
   background-color: var(--surface-raised);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
+  padding: 0.5em !important;
+}
+.project-content ul {
+  justify-self: flex-start;
+}
+
+.grid--full .project-content {
+  grid-column: 1 / -1;
+}
+
+.grid--full {
+  grid-template:
+    "headline" min-content
+    "subtitle" min-content
+    "links" min-content
+    "content" 1fr
+    "back" 3rem
+    / 1fr;
+}
+
+.grid--full .project-photos {
+  display: none;
+  grid-area: unset;
+}
+
+@media only screen and (min-width: 1080px) {
+  #project .grid.grid--full {
+    grid-template:
+      "headline" min-content
+      "subtitle" min-content
+      "links" min-content
+      "content" 1fr
+      "back" 3rem
+      / 1fr;
+  }
 }
 
 .project-photos > img,

@@ -30,6 +30,12 @@ export default {
       type: "slug",
     },
     {
+      name: "order",
+      title: "Order",
+      type: "number",
+      description: "This project's sort order, from first to last",
+    },
+    {
       name: "linkUrl",
       title: "Link URL",
       type: "string",

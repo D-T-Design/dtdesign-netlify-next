@@ -7,12 +7,13 @@ import urlFor from "../urlFor";
 
 export async function getStaticProps() {
   const { projects, work } = await client.fetch(`{
-    "projects": *[_type == "project"]{
+    "projects": *[_type == "project"] | order(order asc, _createdAt desc) {
       title,
       subtitle,
       slug,
       previewimg,
-      linkUrl
+      linkUrl,
+      order
     },
     "work": *[_type == "work"]{
       title,
@@ -26,13 +27,15 @@ export async function getStaticProps() {
 }
 
 export default function Work({ projects, work }) {
+  const workDoc = Array.isArray(work) ? work[0] : work;
+  console.log({ projects, work });
   const headSettings = {
-    title: work?.seotitle ? work.seotitle : "My Work — David Torres, Full-Stack Software Engineer",
-    description: work?.seodescription
-      ? work.seodescription
+    title: workDoc?.seotitle ? workDoc.seotitle : "My Work — David Torres, Full-Stack Software Engineer",
+    description: workDoc?.seodescription
+      ? workDoc.seodescription
       : "Projects and products built by David Torres: a healthcare candidate CRM, a custom headless CMS, a Next.js career site platform with localization, and earlier freelance web projects.",
   };
-  const headline = work?.title ? work.title : "My Design Work";
+  const headline = workDoc?.title ? workDoc.title : "My Design Work";
 
   return (
     <main className="body" id="work">

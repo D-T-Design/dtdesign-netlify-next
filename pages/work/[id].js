@@ -47,11 +47,13 @@ export default function Project({ projectData }) {
     },
   };
 
+  const hasGallery = projectData.gallery?.some((img) => img?._type);
+
   return (
     <>
       <Head title={headSettings.title} description={headSettings.description} />
       <main className="body" id="project">
-        <div className="grid">
+        <div className={`grid${hasGallery ? "" : " grid--full"}`}>
           <Header rank={1} text={projectData.title} type="headline" />
           <Header rank={4} text={projectData.subtitle} type="subtitle" />
 
@@ -81,7 +83,7 @@ export default function Project({ projectData }) {
           </section>
 
           <section className="project-photos">
-            {(projectData.gallery ?? []).map((image, index) => (
+            {(projectData.gallery ?? []).map((image, index) =>
               image?._type ? (
                 <img
                   src={urlFor(image).url()}
@@ -89,8 +91,8 @@ export default function Project({ projectData }) {
                   className="project-photo"
                   key={index}
                 />
-              ) : null
-            ))}
+              ) : null,
+            )}
           </section>
 
           <section className="project-back">
