@@ -6,31 +6,42 @@ import client from "../client";
 import urlFor from "../urlFor";
 
 export async function getStaticProps() {
-  const projects = await client.fetch(/* groq */ `*[_type == "project"]{
-				title,
-				subtitle,
-				slug,
-				previewimg,
-				linkUrl
-		}`);
-  return { props: { projects } };
+  const { projects, work } = await client.fetch(`{
+    "projects": *[_type == "project"]{
+      title,
+      subtitle,
+      slug,
+      previewimg,
+      linkUrl
+    },
+    "work": *[_type == "work"]{
+      title,
+      seodescription,
+      seotitle,
+      slug,
+      previewimg
+    }
+  }`);
+  return { props: { projects, work } };
 }
 
-export default function Work({ projects }) {
+export default function Work({ projects, work }) {
   const headSettings = {
-    title: "My Work — David Torres, Full-Stack Software Engineer",
-    description:
-      "Projects and products built by David Torres: a healthcare candidate CRM, a custom headless CMS, a Next.js career site platform with localization, and earlier freelance web projects.",
+    title: work?.seotitle ? work.seotitle : "My Work — David Torres, Full-Stack Software Engineer",
+    description: work?.seodescription
+      ? work.seodescription
+      : "Projects and products built by David Torres: a healthcare candidate CRM, a custom headless CMS, a Next.js career site platform with localization, and earlier freelance web projects.",
   };
+  const headline = work?.title ? work.title : "My Design Work";
 
   return (
     <main className="body" id="work">
       <Head title={headSettings.title} description={headSettings.description} />
 
       <div className="col">
-        <Header rank={1} text="My Design Work" type="headline" />
+        <Header rank={1} text={headline} type="headline" />
 
-        {projects.map((project, i) => {
+        {(projects ?? []).map((project, i) => {
           const projectPreviewUrl = project.previewimg ? urlFor(project.previewimg).url() : null;
           return (
             <div className="project-thumb" key={i}>
