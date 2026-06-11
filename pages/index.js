@@ -24,8 +24,8 @@ export default function Home({ content }) {
   const components = {
     marks: {
       link: (props) => (
-        <Link href={props.value.href} legacyBehavior>
-          <a>{props.children}</a>
+        <Link href={props.value.href}>
+          {props.children}
         </Link>
       ),
     },
@@ -69,7 +69,7 @@ export default function Home({ content }) {
           <Header rank={2} text={content.subtitle} type="headline" />
 
           <div className="skills">
-            {content.tech.map((skill, index) => (
+            {(content.tech ?? []).map((skill, index) => (
               <div className="skill-container" key={index}>
                 <img src={`/img/${skill.value}.svg`} alt={skill.title} title={skill.title} />
               </div>
@@ -82,10 +82,8 @@ export default function Home({ content }) {
         <section id="projects">
           <Header rank={2} text="View My Projects" type="headline" />
 
-          <Link href="/work" legacyBehavior>
-            <a title={content.previewimg.caption}>
-              <PreviewImg />
-            </a>
+          <Link href="/work" title={content.previewimg?.caption}>
+            <PreviewImg />
           </Link>
         </section>
       </div>

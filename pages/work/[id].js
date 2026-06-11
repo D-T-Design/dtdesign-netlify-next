@@ -74,32 +74,31 @@ export default function Project({ projectData }) {
             <Header rank={2} text="Tech Used" type="headline" />
 
             <ul>
-              {projectData.tech.map((text, index) => (
+              {(projectData.tech ?? []).map((text, index) => (
                 <li key={index}>{text}</li>
               ))}
             </ul>
           </section>
 
           <section className="project-photos">
-            {projectData.gallery.map((image, index) => (
-              <img
-                src={urlFor(image).url()}
-                alt={image.caption}
-                layout="responsive"
-                className="project-photo"
-                key={index}
-              />
+            {(projectData.gallery ?? []).map((image, index) => (
+              image?._type ? (
+                <img
+                  src={urlFor(image).url()}
+                  alt={image.caption ?? ""}
+                  className="project-photo"
+                  key={index}
+                />
+              ) : null
             ))}
           </section>
 
           <section className="project-back">
-            <Link href="/work" legacyBehavior>
-              <a className="project-back">
-                <span>
-                  <ArrowL />
-                </span>
-                Back To My Work
-              </a>
+            <Link href="/work" className="project-back">
+              <span>
+                <ArrowL />
+              </span>
+              Back To My Work
             </Link>
           </section>
         </div>

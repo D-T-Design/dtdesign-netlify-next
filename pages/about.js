@@ -18,7 +18,7 @@ export async function getStaticProps() {
 const components = {
   marks: {
     link: (props) => (
-      <Link href={props.value.href} legacyBehavior>
+      <Link href={props.value.href}>
         <a>{props.children}</a>
       </Link>
     ),
@@ -37,7 +37,7 @@ export default function About({ about }) {
       </div>
 
       <div className="col">
-        {about.gallery.map((image, index) => (
+        {(about.gallery ?? []).map((image, index) => (
           <img src={urlFor(image).url()} alt={image.caption} key={index} />
         ))}
       </div>

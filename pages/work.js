@@ -31,31 +31,27 @@ export default function Work({ projects }) {
         <Header rank={1} text="My Design Work" type="headline" />
 
         {projects.map((project, i) => {
-          const projectPreviewUrl = urlFor(project.previewimg).url();
+          const projectPreviewUrl = project.previewimg ? urlFor(project.previewimg).url() : null;
           return (
             <div className="project-thumb" key={i}>
               <h2>
-                <Link href={`/work/${project.slug.current}`} legacyBehavior>
-                  <a title={project.title}>{project.title}</a>
+                <Link href={`/work/${project.slug.current}`} title={project.title}>
+                  {project.title}
                 </Link>
               </h2>
               <h4>{project.subtitle}</h4>
 
-              <Link href={`/work/${project.slug.current}`} legacyBehavior>
-                <a title={project.title}>
-                  <img src={projectPreviewUrl} alt={project.title} />
-                </a>
+              <Link href={`/work/${project.slug.current}`} title={project.title}>
+                {projectPreviewUrl && <img src={projectPreviewUrl} alt={project.title} />}
               </Link>
 
               <div className="project-links">
-                <Link href={`/work/${project.slug.current}`} legacyBehavior>
-                  <a className="cta">See Project</a>
+                <Link href={`/work/${project.slug.current}`} className="cta">
+                  See Project
                 </Link>
                 {project.linkUrl && (
-                  <Link href={project.linkUrl} legacyBehavior>
-                    <a className="subtle" target="_blank" rel="noopener">
-                      View Site <LinkIcon />
-                    </a>
+                  <Link href={project.linkUrl} className="subtle" target="_blank" rel="noopener">
+                    View Site <LinkIcon />
                   </Link>
                 )}
               </div>
