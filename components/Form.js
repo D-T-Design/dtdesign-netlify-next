@@ -38,8 +38,6 @@ export default function SendMessageForm() {
 		<form
 			name="contact"
 			method="POST"
-			netlify-honeypot="bot-field"
-			data-netlify="true"
 			onSubmit={handleSubmit}
 		>
 			<input type="hidden" name="form-name" value="contact" />

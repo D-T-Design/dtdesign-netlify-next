@@ -12,13 +12,13 @@ export default function Footer(props) {
 					Download Resume <img src="/img/pdf.svg" alt="Click Here to Download my Resume" />
 				</a>
 				<div className="social">
-					<a href="http://www.linkedin.com/in/davidtorresdesign">
+					<a href="https://www.linkedin.com/in/davidtorresdesign" target="_blank" rel="noreferrer">
 						<img src="/img/linkedin.svg" alt="" />
 					</a>
-					<a href="https://github.com/D-T-Design/">
+					<a href="https://github.com/D-T-Design/" target="_blank" rel="noreferrer">
 						<img src="/img/github.svg" alt="" />
 					</a>
-					<a href="https://stackoverflow.com/users/story/11743348">
+					<a href="https://stackoverflow.com/users/story/11743348" target="_blank" rel="noreferrer">
 						<img src="/img/stackoverflow.svg" alt="" />
 					</a>
 				</div>
