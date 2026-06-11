@@ -28,7 +28,6 @@ export async function getStaticProps() {
 
 export default function Work({ projects, work }) {
   const workDoc = Array.isArray(work) ? work[0] : work;
-  console.log({ projects, work });
   const headSettings = {
     title: workDoc?.seotitle ? workDoc.seotitle : "My Work — David Torres, Full-Stack Software Engineer",
     description: workDoc?.seodescription
