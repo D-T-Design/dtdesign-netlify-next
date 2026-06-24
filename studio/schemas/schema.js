@@ -5,13 +5,6 @@ import about from "./about";
 import contact from "./contact";
 import privacy from "./privacy";
 import index from "./index";
+import work from "./work";
 
-export default [
-  download,
-  blockContent,
-  project,
-  about,
-  contact,
-  privacy,
-  index,
-]
+export default [download, blockContent, project, about, contact, privacy, index, work];

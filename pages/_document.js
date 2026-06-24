@@ -4,17 +4,17 @@ import { GA_TRACKING_ID } from "../lib/gtag";
 import { FB_PIXEL_ID } from "../lib/fbp";
 
 export default class MyDocument extends Document {
-	render() {
-		return (
-			<Html>
-				<Head>
-					<link rel="icon" href="/dtdesign-icon.jpg" />
-					<link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
-					{/* Global Site Tag (gtag.js) - Google Analytics */}
-					<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-					<script
-						dangerouslySetInnerHTML={{
-							__html: `
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link rel="icon" href="/dtdesign-icon.jpg" />
+          <link rel="stylesheet" href="https://use.typekit.net/rdq5egn.css" />
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -22,12 +22,12 @@ export default class MyDocument extends Document {
               page_path: window.location.pathname,
             });
           `,
-						}}
-					/>
-					{/* Facebook Pixel */}
-					<script
-						dangerouslySetInnerHTML={{
-							__html: `
+            }}
+          />
+          {/* Facebook Pixel */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
 								!function(f,b,e,v,n,t,s)
 								{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 									n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -39,28 +39,28 @@ export default class MyDocument extends Document {
 									fbq('init', '${FB_PIXEL_ID}');
 									fbq('track', 'PageView');
               `,
-						}}
-					/>
-					<noscript>
-						<img
-							height="1"
-							width="1"
-							style={{ display: "none" }}
-							src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
-						/>
-					</noscript>
+            }}
+          />
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+            />
+          </noscript>
 
-					{/* Facebook SDK */}
-					<script
-						dangerouslySetInnerHTML={{
-							__html: `window.fbAsyncInit = function() {
+          {/* Facebook SDK */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.fbAsyncInit = function() {
 								FB.init({
 									appId      : '982745578921499',
 									cookie     : true,
 									xfbml      : true,
 									version    : 'v9.0'
 								});
-								FB.AppEvents.logPageView();   
+								FB.AppEvents.logPageView();
 							};
 							(function(d, s, id){
 								var js, fjs = d.getElementsByTagName(s)[0];
@@ -69,14 +69,14 @@ export default class MyDocument extends Document {
 								js.src = "https://connect.facebook.net/en_US/sdk.js";
 								fjs.parentNode.insertBefore(js, fjs);
 							}(document, 'script', 'facebook-jssdk'));`,
-						}}
-					/>
-				</Head>
-				<body>
-					<Main />
-					<NextScript />
-				</body>
-			</Html>
-		);
-	}
+            }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }

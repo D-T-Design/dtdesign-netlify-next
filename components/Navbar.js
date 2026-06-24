@@ -24,14 +24,14 @@ export default function NavMenu(props) {
 	return (
 		<section className="nav">
 			<div className="logo">
-				<Link href="/">
+				<Link href="/" legacyBehavior>
 					<a>
 						<img src="/img/logo.svg" alt="David Torres Design" />
 					</a>
 				</Link>
 			</div>
 			<div className="menu-small">
-				<Link href="/menu">
+				<Link href="/menu" legacyBehavior>
 					<a>
 						<img src="/img/menu.svg" alt="Menu" />
 					</a>

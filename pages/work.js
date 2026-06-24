@@ -6,61 +6,72 @@ import client from "../client";
 import urlFor from "../urlFor";
 
 export async function getStaticProps() {
-	const projects = await client.fetch(/* groq */ `*[_type == "project"]{
-				title,
-				subtitle,
-				slug,
-				previewimg,
-				linkUrl
-		}`);
-	return { props: { projects } };
+  const { projects, work } = await client.fetch(`{
+    "projects": *[_type == "project"] | order(order asc, _createdAt desc) {
+      title,
+      subtitle,
+      slug,
+      previewimg,
+      linkUrl,
+      order
+    },
+    "work": *[_type == "work"]{
+      title,
+      seodescription,
+      seotitle,
+      slug,
+      previewimg
+    }
+  }`);
+  return { props: { projects, work } };
 }
 
-export default function Work({ projects }) {
-	const headSettings = {
-		title: "My Web Design and Development Portfolio - David Torres Design",
-		description: "Check out my work from happy clients and personal projects.",
-	};
+export default function Work({ projects, work }) {
+  const workDoc = Array.isArray(work) ? work[0] : work;
+  const headSettings = {
+    title: workDoc?.seotitle ? workDoc.seotitle : "My Work — David Torres, Full-Stack Software Engineer",
+    description: workDoc?.seodescription
+      ? workDoc.seodescription
+      : "Projects and products built by David Torres: a healthcare candidate CRM, a custom headless CMS, a Next.js career site platform with localization, and earlier freelance web projects.",
+  };
+  const headline = workDoc?.title ? workDoc.title : "My Design Work";
 
-	return (
-		<main className="body" id="work">
-			<Head title={headSettings.title} description={headSettings.description} />
+  return (
+    <main className="body" id="work">
+      <Head title={headSettings.title} description={headSettings.description} />
 
-			<div className="col">
-				<Header rank={1} text="My Design Work" type="headline" />
+      <div className="col">
+        <Header rank={1} text={headline} type="headline" />
 
-				{projects.map((project, i) => {
-					const projectPreviewUrl = urlFor(project.previewimg).url();
-					return (
-						<div className="project-thumb" key={i}>
-							<h2>
-								<Link href={`/work/${project.slug.current}`}>
-									<a title={project.title}>{project.title}</a>
-								</Link>
-							</h2>
-							<h4>{project.subtitle}</h4>
+        {(projects ?? []).map((project, i) => {
+          const projectPreviewUrl = project.previewimg ? urlFor(project.previewimg).url() : null;
+          return (
+            <div className="project-thumb" key={i}>
+              <h2>
+                <Link href={`/work/${project.slug.current}`} title={project.title}>
+                  {project.title}
+                </Link>
+              </h2>
+              <h4>{project.subtitle}</h4>
 
-							<Link href={`/work/${project.slug.current}`}>
-								<a title={project.title}>
-									<img src={projectPreviewUrl} alt={project.title} />
-								</a>
-							</Link>
+              <Link href={`/work/${project.slug.current}`} title={project.title}>
+                {projectPreviewUrl && <img src={projectPreviewUrl} alt={project.title} />}
+              </Link>
 
-							<div className="project-links">
-								<Link href={`/work/${project.slug.current}`}>
-									<a className="cta">See Project</a>
-								</Link>
-
-								<Link href={project.linkUrl}>
-									<a className="subtle" target="_blank" rel="noopener">
-										View Site <LinkIcon />
-									</a>
-								</Link>
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		</main>
-	);
+              <div className="project-links">
+                <Link href={`/work/${project.slug.current}`} className="cta">
+                  See Project
+                </Link>
+                {project.linkUrl && (
+                  <Link href={project.linkUrl} className="subtle" target="_blank" rel="noopener">
+                    View Site <LinkIcon />
+                  </Link>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </main>
+  );
 }

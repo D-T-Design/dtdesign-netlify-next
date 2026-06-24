@@ -1,10 +1,14 @@
-const withOffline = require("next-offline");
-
 const nextConfig = {
-	basePath: "",
+	reactStrictMode: true,
 	images: {
-		domains: ["cdn.sanity.io"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "cdn.sanity.io",
+			},
+		],
+		unoptimized: true,
 	},
 };
 
-module.exports = withOffline(nextConfig);
+module.exports = nextConfig;

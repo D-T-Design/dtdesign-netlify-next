@@ -3,7 +3,7 @@ import { structureTool } from "sanity/structure";
 import schemas from "./schemas/schema";
 
 export default defineConfig({
-  title: "dtdesign-netlify-next",
+  title: "david-torres-design",
   projectId: "m8vumzjq",
   dataset: "production",
   plugins: [structureTool()],
